@@ -68,13 +68,14 @@ ZSH_THEME="cloud"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
 plugins=(
     z
     wd
-    git 
+    git
     themes
-    last-working-dir 
-    extract 
+    last-working-dir
+    extract
     web-search
     zsh-autosuggestions
     zsh-syntax-highlighting)
@@ -85,6 +86,7 @@ bindkey ',' autosuggest-accept
 
 alias pacman='sudo pacman'
 alias cls='clear'
+alias c='clear'
 alias py='python'
 alias e='exit'
 alias v='vim'
@@ -93,8 +95,9 @@ alias -s py=vim
 alias -s c=vim
 alias -s cpp=vim
 alias -s txt=vim
-alias cproj='/run/media/jacklanda/系统/Users/Administrator/Desktop/cProj/'
+alias cproj='/home/jacklanda/桌面/cproj/'
 alias linux='/home/jacklanda/桌面/'
+alias desktop='/home/jacklanda/桌面'
 alias windows='/run/media/jacklanda/系统/Users/Administrator/Desktop/'
 alias setproxy='export ALL_PROXY=socks5://127.0.0.1:1088'
 alias unsetproxy='unset ALL_PROXY'
@@ -102,16 +105,52 @@ alias new='export ALL_PROXY=socks5://127.0.0.1:1088 && newsboat -ru /home/jackla
 alias show='find -name'
 alias anal='ncdu'
 alias t='trans'
-alias clock_1='watch -n1 "date '+%D%n%T'|figlet -k"'
+alias clock='watch -n1 "date '+%D%n%T'|figlet -k"'
 alias .vimrc='vim ~/.vimrc'
 alias .zshrc='vim ~/.zshrc'
-alias resetplasma='killall plasmashell'
+alias resetplasma='sh /home/jacklanda/script/reset_plasma.sh'
+# 'kquitapp5 plasmashell >/dev/null && kstart5 plasmashell >/dev/null &'
+alias blog='cd ~/桌面/myblog/ && ./run.sh'
+alias myblog='cd ~/桌面/myblog'
+alias article='cd ~/桌面/myblog/content/article'
+alias newblog='cd ~/桌面/newblog'
+alias debug='cd ~/桌面/myblog && hugo server -D --bind 192.168.0.103 --baseURL=http://192.168.0.103:1313'
+# alias rm=del
+# del(){mv $@ /home/jacklanda/.local/share/Trash/files/}
+alias sshp='sshpass -p 5566789 autossh -M0 -t jacklanda@2001:da8:208:38:a1b7:a494:bcfc:54dc'
+alias myphone="sshpass -p 5566789 autossh -p 8022 -M0 -t u0_a124@2408:84e1:c7:f919:5cdb:5020:abf:eb83"
+alias start="sudo systemctl start"
+alias stop="sudo systemctl stop"
+alias status="sudo systemctl status"
+alias restart="sudo systemctl restart"
+alias login="/home/jacklanda/script/login_school_network --login"
+alias logout="/home/jacklanda/script/login_school_network --logout"
+alias company="ssh -p 2222 liuyang@192.168.1.24"
+alias remote="ssh -p 2222 liuyang@relay01.data-baker.com"
+alias count="ls -l | grep "^-" | wc -l"
+alias wordfreq="sh ~/script/word_freq.sh"
+alias client="redis-cli"
+alias redis-out="sudo rdb -c memory /var/lib/redis/dump.rdb > /home/jacklanda/桌面/redis_mem.csv"
+alias site-packages="cd ~/.local/lib/python3.8/site-packages"
+alias find="fd -IH"
+alias grep="rg -uuu"
+alias cat="bat"
+alias info="tldr"
+alias ls="exa"
+
 # User configuration
 
 # 添加Rust可执行文件的环境变量
 export PATH="$HOME/.cargo/bin:$PATH"
-# 添加Go可执行文件的环境变量
-export PATH="$PATH:$HOME/.go/go/bin"
+
+export GOROOT=$HOME/.go/go
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/.gopath
+export PATH=$PATH:$GOPATH/bin
+
+# 设置Go代理
+export GO111MODULE=on
+export GOPROXY=https://goproxy.io
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -134,5 +173,3 @@ export PATH="$PATH:$HOME/.go/go/bin"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
