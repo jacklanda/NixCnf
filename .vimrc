@@ -134,7 +134,7 @@ au InsertLeave * set nopaste
 
 "通过<kj>键快速从插入模式切换回普通模式
 inoremap kj <Esc>
-nnoremap <Leader>w :w!<cr>
+nnoremap <silent><Leader>w :w!<CR>
 inoremap <Leader>w <Esc>:w!<CR>
 nnoremap q :q<CR>
 
@@ -219,14 +219,6 @@ map <silent><leader>f :Leaderf mru --fuzzy --reverse --bottom<CR><TAB>
 map <silent><leader>g :Leaderf function --reverse --bottom<CR><TAB>
 map <silent>s :silent Startify<CR>
 
-"设置仅在python文件下映射调试快捷键
-"autocmd FileType python nnoremap r :REPLToggle<CR>
-"autocmd Filetype python nnoremap <F8> <Esc>:REPLDebugStopAtCurrentLine<Cr>
-"autocmd Filetype python nnoremap <F6> <Esc>:REPLPDBN<CR>
-"autocmd Filetype python nnoremap <F7> <Esc>:REPLPDBS<CR>
-"autocmd Filetype python nnoremap <leader>6 <Esc>:REPLSendAll<CR>
-"let g:repl_position = 3
-
 noremap <C-d> :sh<CR>
 "<F5>一键（编译）运行程序
 map <silent> <F5> :call CompileRunGcc()<CR><CR>
@@ -275,7 +267,7 @@ elseif &filetype == 'python'
     silent :!echo "+----------------------+"
     silent :!echo "|「Python」脚本输出为：|"
     silent :!echo "+----------------------+\n"
-    silent exec "!python3.8 %"
+    silent exec "!python3.9 %"
     call feedkeys("\<C-d>")
     "call feedkeys("\<C-z>",'n')
     endif
@@ -295,7 +287,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ervandew/supertab'
-Plug 'sillybun/vim-repl'
 Plug 'liuchengxu/vista.vim'
 Plug 'mhinz/vim-startify'
 Plug 'mbbill/undotree'
@@ -347,25 +338,6 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 nmap <silent> <Leader>t <Plug>TranslateW
 let g:tanslator_default_engines = ['youdao', 'haici', 'google']
 
-"vim-repl调试器配置
-"let g:SuperTabDefaultCompletionType = "context"
-"let g:repl_program = {
-            "\   'python': 'ipython',
-            "\   'default': 'zsh',
-            "\   'r': 'R',
-            "\   'lua': 'lua',
-            "\   }
-"let g:repl_predefine_python = {
-            "\   'numpy': 'import numpy as np',
-            "\   'matplotlib': 'from matplotlib import pyplot as plt'
-            "\   }
-"let g:repl_cursor_down = 1
-"let g:repl_python_automerge = 1
-"let g:repl_ipython_version = '7'
-"let g:repl_width = 60
-"let g:repl_height = 800
-"let g:sendtorepl_invoke_key = "t"
-
 "设置Vim的背景为终端透明（首先终端设置为透明）
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
@@ -402,7 +374,7 @@ let g:startify_skiplist = [
 
 " YouCompleteMe 补全配置
 " Python3的解释器路径
-let g:ycm_python_binary_path = '/usr/bin/python3.8'
+let g:ycm_python_binary_path = '/usr/bin/python3.9'
 "配置全局路径
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
 "直接加载文件，不提示
@@ -518,7 +490,7 @@ let g:NERDCustomDelimiters = {
 "单行注释&取消注释
 nmap \ ,c<space>
 "可视化模式多行注释
-vmap \ ,cm
+vmap \ ,c<space>
 "在当前行插入注释
 nmap <c-\> ,cA
 imap <c-\> <esc>,c<space><end>
