@@ -309,6 +309,7 @@ Plug 'gregsexton/matchtag'
 Plug 'Yilin-Yang/vim-markbar'
 Plug 'romgrk/winteract.vim'
 Plug 'w0rp/ale'
+Plug 'tell-k/vim-autopep8'
 "Plug 'puremourning/vimspector'
 
 call plug#end()
@@ -509,3 +510,11 @@ nmap gw :InteractiveWindow<CR>
 let g:ale_set_highlights = 1
 nmap <F9> :ALELint<CR>
 let g:ale_lint_on_enter = 0
+
+"autopep-8配置
+nnoremap <F8> :Autopep8<CR>
+let g:autopep8_pep8_passes=1000
+let g:autopep8_disable_show_diff=1
+
+"let g:autopep8_diff_type='vertical'
+let g:autopep8_on_save = 1
