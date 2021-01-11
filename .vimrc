@@ -18,8 +18,8 @@ endif
 let g:detorte_theme_mode = 'dark'
 set background=dark
 "文件在Vim之外修改过，自动重新读入
-set autoread                    " reload files when changed on disk, i.e. via `git checkout` "
-set nobackup                    " do not keep a backup file "
+set autoread                    
+set nobackup                    
 "取消警铃
 set noerrorbells
 set visualbell t_vb=
@@ -33,23 +33,23 @@ set termencoding=utf-8
 set formatoptions+=m
 set formatoptions+=B
 "显示光标所在行/列号
-set ruler                       " show the current row and column "
+set ruler                       
 "显示行号
-set number                      " show line numbers "
+set number                      
 "超过窗口宽度的行不自动回绕显示
 set nowrap
 "回显命令
-set showcmd                     " display incomplete commands "
-set showmode                    " display current modes "
-set showmatch                   " jump to matches when entering parentheses "
+set showcmd                     
+set showmode                    
+set showmatch                   
 set matchtime=2
 "Vim查找配置
-set hlsearch                    " highlight searches "
-set incsearch                   " do incremental searching, search as you type "
+set hlsearch                    
+set incsearch                   
 set ignorecase                  " 设置搜索时大小写不敏感 "
-set smartcase                   " no ignorecase if Uppercase char present "
+set smartcase                   
 "Vim制表符设置
-set expandtab                   " expand tabs to spaces "
+set expandtab               
 set smarttab
 set shiftround
 "Vim缩进设置
@@ -117,8 +117,8 @@ endfun
 "撤销配置:
 nnoremap U <C-r>
 set undolevels=10000              "撤销上限
-set undoreload=10000             "number of lines to save for undo
-set undofile                 "keep a persistent backup file
+set undoreload=10000             
+set undofile                 
 set undodir=$HOME/.vim/.undo/
 
 "修改引导键为逗点
