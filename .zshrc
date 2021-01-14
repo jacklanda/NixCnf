@@ -94,6 +94,7 @@ alias vi='vim'
 alias -s py=vim
 alias -s c=vim
 alias -s cpp=vim
+alias -s go=vim
 alias -s txt=vim
 alias cproj='/home/jacklanda/桌面/cproj/'
 alias linux='/home/jacklanda/桌面/'
@@ -115,7 +116,7 @@ alias myblog='cd ~/桌面/myblog'
 alias article='cd ~/桌面/myblog/content/article'
 alias newblog='cd ~/桌面/newblog'
 alias debug='cd ~/桌面/myblog && hugo server -D --bind 192.168.0.103 --baseURL=http://192.168.0.103:1313'
-# alias rm=del
+ alias rm="rm -i"
 # del(){mv $@ /home/jacklanda/.local/share/Trash/files/}
 alias sshp='sshpass -p 5566789 autossh -M0 -t jacklanda@2001:da8:208:38:a1b7:a494:bcfc:54dc'
 alias myphone="sshpass -p 5566789 autossh -p 8022 -M0 -t u0_a124@2408:84e1:c7:f919:5cdb:5020:abf:eb83"
@@ -137,6 +138,7 @@ alias grep="rg -uuu"
 alias cat="bat"
 alias info="tldr"
 alias ls="exa"
+alias find-content="fd .|xargs grep -ri"
 
 # User configuration
 

@@ -523,7 +523,9 @@ let g:autopep8_disable_show_diff=1
 let g:autopep8_on_save = 1
 
 "vim-floaterm 配置
-highlight Floaterm guibg=black
+highlight Floaterm ctermbg=black
+let g:floaterm_title="Terminal($1/$2)"
+highlight FloatermBorder ctermbg=0 ctermfg=2
 nnoremap <silent><F7> :FloatermToggle<CR>
 tnoremap <silent><F7> <C-\><C-n>:FloatermKill<CR>
 
