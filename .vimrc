@@ -4,6 +4,7 @@ set t_Co=256
 colorscheme fijicat
 autocmd FileType python colorscheme gruvbox
 autocmd FileType markdown.mkd colorscheme detorte
+autocmd FileType text colorscheme challenger_deep
 autocmd FileType html,css colorscheme one
 autocmd FileType javascript,html,css,xml set ai
 autocmd FileType javascript,html,css,xml set sw=2
@@ -18,8 +19,8 @@ endif
 let g:detorte_theme_mode = 'dark'
 set background=dark
 "文件在Vim之外修改过，自动重新读入
-set autoread                    
-set nobackup                    
+set autoread
+set nobackup
 "取消警铃
 set noerrorbells
 set visualbell t_vb=
@@ -33,23 +34,23 @@ set termencoding=utf-8
 set formatoptions+=m
 set formatoptions+=B
 "显示光标所在行/列号
-set ruler                       
+set ruler
 "显示行号
-set number                      
+set number
 "超过窗口宽度的行不自动回绕显示
 set nowrap
 "回显命令
-set showcmd                     
-set showmode                    
-set showmatch                   
+set showcmd
+set showmode
+set showmatch
 set matchtime=2
 "Vim查找配置
-set hlsearch                    
-set incsearch                   
+set hlsearch
+set incsearch
 set ignorecase                  " 设置搜索时大小写不敏感 "
-set smartcase                   
+set smartcase
 "Vim制表符设置
-set expandtab               
+set expandtab
 set smarttab
 set shiftround
 "Vim缩进设置
@@ -79,6 +80,8 @@ function! AutoSetTheme()
         colorscheme gruvbox
     elseif &filetype == 'markdown.mkd'
         colorscheme detorte
+    elseif &filetype == 'text'
+        colorscheme challenger_deep
     else
         highlight clear
         colorscheme molokai
@@ -117,8 +120,8 @@ endfun
 "撤销配置:
 nnoremap U <C-r>
 set undolevels=10000              "撤销上限
-set undoreload=10000             
-set undofile                 
+set undoreload=10000
+set undofile
 set undodir=$HOME/.vim/.undo/
 
 "修改引导键为逗点
@@ -309,9 +312,9 @@ Plug 'gregsexton/matchtag'
 Plug 'Yilin-Yang/vim-markbar'
 Plug 'romgrk/winteract.vim'
 Plug 'w0rp/ale'
-Plug 'tell-k/vim-autopep8'
-"Plug 'puremourning/vimspector'
-
+Plug 'tell-k/vim-autopep8', {'for': 'python'}
+Plug 'voldikss/vim-floaterm'
+Plug 'obcat/vim-hitspop'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -503,18 +506,26 @@ nmap <leader>m <Plug>ToggleMarkbar
 let g:markbar_width = 30
 let g:markbar_num_lines_context = 3
 
-"vim-winteract.vim交互式地调整窗口大小
+"vim-winteract.vim 交互式地调整窗口大小
 nmap gw :InteractiveWindow<CR>
 
-"ale配置
+"ale 配置
 let g:ale_set_highlights = 1
 nmap <F9> :ALELint<CR>
 let g:ale_lint_on_enter = 0
 
-"autopep-8配置
+"autopep-8 配置
 nnoremap <F8> :Autopep8<CR>
 let g:autopep8_pep8_passes=1000
 let g:autopep8_disable_show_diff=1
 
 "let g:autopep8_diff_type='vertical'
 let g:autopep8_on_save = 1
+
+"vim-floaterm 配置
+highlight Floaterm guibg=black
+nnoremap <silent><F7> :FloatermToggle<CR>
+tnoremap <silent><F7> <C-\><C-n>:FloatermKill<CR>
+
+"vim-hitspop 配置
+hi hitspopErrorMsg ctermfg=214
