@@ -16,6 +16,7 @@ if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+"set completeopt+=popup
 let g:detorte_theme_mode = 'dark'
 set background=dark
 "文件在Vim之外修改过，自动重新读入
