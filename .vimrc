@@ -311,7 +311,6 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
 Plug 'gregsexton/matchtag'
 Plug 'Yilin-Yang/vim-markbar'
-Plug 'romgrk/winteract.vim'
 Plug 'w0rp/ale'
 Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
@@ -506,9 +505,6 @@ imap <c-\> <esc>,c<space><end>
 nmap <leader>m <Plug>ToggleMarkbar
 let g:markbar_width = 30
 let g:markbar_num_lines_context = 3
-
-"vim-winteract.vim 交互式地调整窗口大小
-nmap gw :InteractiveWindow<CR>
 
 "ale 配置
 let g:ale_set_highlights = 1
