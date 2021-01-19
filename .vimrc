@@ -3,6 +3,7 @@ set t_Co=256
 "设置Vim主题
 colorscheme fijicat
 autocmd FileType python colorscheme gruvbox
+autocmd FileType bash,zsh colorscheme spacecamp
 autocmd FileType markdown.mkd colorscheme detorte
 autocmd FileType text colorscheme challenger_deep
 autocmd FileType html,css colorscheme one
