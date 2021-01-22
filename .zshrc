@@ -132,13 +132,14 @@ alias count="ls -l | grep "^-" | wc -l"
 alias wordfreq="sh ~/script/word_freq.sh"
 alias client="redis-cli"
 alias redis-out="sudo rdb -c memory /var/lib/redis/dump.rdb > /home/jacklanda/桌面/redis_mem.csv"
-alias site-packages="cd ~/.local/lib/python3.8/site-packages"
+alias site-packages="cd ~/.local/lib/python3.9/site-packages"
 alias find="fd -IH"
 alias grep="rg -uuu"
 alias cat="bat"
 alias info="tldr"
 alias ls="exa"
 alias find-content="fd .|xargs grep -ri"
+alias python="ptpython"
 
 # User configuration
 
