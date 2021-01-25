@@ -425,6 +425,7 @@ let g:ycm_filetype_whitelist = {
             \ "vim":1,
             \ "sh":1,
 			\ "zsh":1,
+            \ "yaml":1,
             \ "markdown":1,
 			\ }
 "ycm不补全的黑名单
@@ -482,8 +483,6 @@ nnoremap <silent> n :call WordNavigation(1)<cr>
 nnoremap <silent> N :call WordNavigation(0)<cr>
 
 "nerdcommenter 配置：
-"注释符后添加空格
-"let g:NERDSpaceDelims = 1
 "使用紧凑语法美化多行注释
 let g:NERDCompactSexyComs = 1
 "自定义默认注释符
@@ -500,9 +499,6 @@ vmap \ ,c<space>
 nmap <c-\> ,cA
 imap <c-\> <esc>,c<space><end>
 
-"autopair配置
-" let g:AutoPairs = {'<':'>'}
-
 nmap <leader>m <Plug>ToggleMarkbar
 let g:markbar_width = 30
 let g:markbar_num_lines_context = 3
@@ -517,7 +513,6 @@ nnoremap <F8> :Autopep8<CR>
 let g:autopep8_pep8_passes=1000
 let g:autopep8_disable_show_diff=1
 
-"let g:autopep8_diff_type='vertical'
 let g:autopep8_on_save = 1
 
 "vim-floaterm 配置
