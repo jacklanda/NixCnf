@@ -316,6 +316,8 @@ Plug 'w0rp/ale'
 Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'rhysd/vim-clang-format'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -524,3 +526,15 @@ tnoremap <silent><F7> <C-\><C-n>:FloatermKill<CR>
 
 "vim-hitspop 配置
 hi hitspopErrorMsg ctermfg=214
+
+"vim-cpp-enhanced-highlight 配置
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+let g:cpp_no_function_highlight = 1
+
+"vim-clang-format 配置
+let g:clang_format#auto_format = 1
