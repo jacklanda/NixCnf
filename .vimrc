@@ -225,7 +225,7 @@ map <silent><leader>g :Leaderf function --reverse --bottom<CR><TAB>
 map <silent>s :silent Startify<CR>
 
 noremap <C-d> :sh<CR>
-"<F5>一键（编译）运行程序
+"<F5>一键（编译）运行程序（仅简单测试用）
 map <silent> <F5> :call CompileRunGcc()<CR><CR>
 func! CompileRunGcc()
 silent exec "w"
@@ -420,10 +420,10 @@ let g:ycm_add_preview_to_completeopt = 0
 "设置YCM起作用的白名单
 let g:ycm_filetype_whitelist = {
 			\ "c":1,
+            \ "cpp":1,
             \ "go":1,
             \ "rust":1,
             \ "python":1,
-			\ "cpp":1,
             \ "vim":1,
             \ "sh":1,
 			\ "zsh":1,
