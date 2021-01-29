@@ -87,7 +87,7 @@ bindkey ',' autosuggest-accept
 alias pacman='sudo pacman'
 alias cls='clear'
 alias c='clear'
-alias py='python'
+alias py='clear;ptpython'
 alias e='exit'
 alias v='vim'
 alias vi='vim'
@@ -139,7 +139,6 @@ alias cat="bat"
 alias info="tldr"
 alias ls="exa"
 alias find-content="fd .|xargs grep -ri"
-alias python="ptpython"
 
 # User configuration
 
