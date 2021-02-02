@@ -2,6 +2,7 @@
 set t_Co=256
 "设置Vim主题
 colorscheme fijicat
+autocmd Filetype c,cpp colorscheme fijicat
 autocmd FileType python colorscheme gruvbox
 autocmd FileType bash,zsh colorscheme spacecamp
 autocmd FileType markdown.mkd colorscheme detorte
@@ -85,10 +86,7 @@ function! AutoSetTheme()
     elseif &filetype == 'text'
         colorscheme challenger_deep
     else
-        highlight clear
-        colorscheme molokai
-        hi Normal guibg=NONE ctermbg=NONE
-        hi LineNr guibg=NONE ctermbg=NONE
+        colorscheme fijicat
     endif
 endfunc
 map <silent><C-t> :call AutoSetTheme() <CR>
@@ -340,6 +338,11 @@ let g:lightline = {
 
 "Vista标签查找侧栏
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 
 "Vim-tanslator配置
 nmap <silent> <Leader>t <Plug>TranslateW
