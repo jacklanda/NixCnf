@@ -102,7 +102,6 @@ alias desktop='/home/jacklanda/桌面'
 alias windows='/run/media/jacklanda/系统/Users/Administrator/Desktop/'
 alias setproxy='export ALL_PROXY=socks5://127.0.0.1:1088'
 alias unsetproxy='unset ALL_PROXY'
-alias new='export ALL_PROXY=socks5://127.0.0.1:1088 && newsboat -ru /home/jacklanda/文档/rss_links.txt'
 alias show='find -name'
 alias anal='ncdu'
 alias t='trans'
@@ -110,23 +109,15 @@ alias clock='watch -n1 "date '+%D%n%T'|figlet -k"'
 alias .vimrc='vim ~/.vimrc'
 alias .zshrc='vim ~/.zshrc'
 alias resetplasma='sh /home/jacklanda/script/reset_plasma.sh'
-# 'kquitapp5 plasmashell >/dev/null && kstart5 plasmashell >/dev/null &'
-alias blog='cd ~/桌面/myblog/ && ./run.sh'
-alias myblog='cd ~/桌面/myblog'
-alias article='cd ~/桌面/myblog/content/article'
-alias newblog='cd ~/桌面/newblog'
-alias debug='cd ~/桌面/myblog && hugo server -D --bind 192.168.0.103 --baseURL=http://192.168.0.103:1313'
- alias rm="rm -i"
+alias myblog='cd ~/myblog'
+alias rm="rm -i"
 # del(){mv $@ /home/jacklanda/.local/share/Trash/files/}
-alias sshp='sshpass -p 5566789 autossh -M0 -t jacklanda@2001:da8:208:38:a1b7:a494:bcfc:54dc'
-alias myphone="sshpass -p 5566789 autossh -p 8022 -M0 -t u0_a124@2408:84e1:c7:f919:5cdb:5020:abf:eb83"
 alias start="sudo systemctl start"
 alias stop="sudo systemctl stop"
 alias status="sudo systemctl status"
 alias restart="sudo systemctl restart"
 alias login="/home/jacklanda/script/login_school_network --login"
 alias logout="/home/jacklanda/script/login_school_network --logout"
-alias company="ssh -p 2222 liuyang@192.168.1.24"
 alias remote="ssh -p 2222 liuyang@relay01.data-baker.com"
 alias count="ls -l | grep "^-" | wc -l"
 alias wordfreq="sh ~/script/word_freq.sh"
