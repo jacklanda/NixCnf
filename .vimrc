@@ -316,6 +316,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format'
+Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -541,3 +542,8 @@ let g:cpp_no_function_highlight = 1
 
 "vim-clang-format 配置
 let g:clang_format#auto_format = 1
+
+"vim-minimap配置
+let g:minimap_auto_start = 1
+let g:minimap_width = 15
+let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'vista', 'startify']
