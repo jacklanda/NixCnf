@@ -99,8 +99,9 @@ function! AutoSetFileHead()
     endif
     " python "
     if &filetype == 'python'
-        call setline(1, "\#!/usr/bin/env python")
-        call append(1, "\# encoding: utf-8")
+        call setline(1, "\#!/usr/bin/python3")
+        call append(1, "\# -*- coding: utf-8 -*-")
+        call append(1, "\# Author: Jacklanda")
     endif
     normal G
     normal o
