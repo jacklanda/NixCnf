@@ -197,8 +197,7 @@ map b zc
 map bb zx
 set foldmethod=indent
 set foldlevelstart=99 "关闭默认折叠选项"
-"auto Filetype python set foldmethod=indent
-"auto Filetype cpp set foldmethod=indent
+
 " 折叠方法:
 " manual    手工折叠
 " indent    使用缩进表示折叠
@@ -206,6 +205,8 @@ set foldlevelstart=99 "关闭默认折叠选项"
 " syntax    使用语法定义折叠
 " diff      对没有更改的文本进行折叠
 " marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
+"auto Filetype python set foldmethod=indent
+"auto Filetype cpp set foldmethod=indent
 
 nnoremap <F2> :set nu! nu?<CR>
 nnoremap <silent><F3> :silent NERDTree<CR>
@@ -318,6 +319,8 @@ Plug 'obcat/vim-hitspop'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format'
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+Plug 'arzg/vim-rust-syntax-ext'
+Plug 'alx741/vim-rustfmt'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -547,4 +550,7 @@ let g:clang_format#auto_format = 1
 "vim-minimap配置
 let g:minimap_auto_start = 1
 let g:minimap_width = 15
-let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'vista', 'startify']
+"let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'vista', 'startify']
+
+"vim-rustfmt配置
+let g:rustfmt_on_save = 1
