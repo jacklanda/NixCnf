@@ -311,7 +311,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
 Plug 'gregsexton/matchtag'
-Plug 'Yilin-Yang/vim-markbar'
+"Plug 'Yilin-Yang/vim-markbar'
 Plug 'w0rp/ale'
 Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
@@ -321,6 +321,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 Plug 'arzg/vim-rust-syntax-ext'
 Plug 'alx741/vim-rustfmt'
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -509,9 +510,9 @@ vmap \ ,c<space>
 nmap <c-\> ,cA
 imap <c-\> <esc>,c<space><end>
 
-nmap <leader>m <Plug>ToggleMarkbar
-let g:markbar_width = 30
-let g:markbar_num_lines_context = 3
+"nmap <leader>m <Plug>ToggleMarkbar
+"let g:markbar_width = 30
+"let g:markbar_num_lines_context = 3
 
 "ale 配置
 let g:ale_set_highlights = 1
