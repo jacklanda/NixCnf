@@ -3,7 +3,7 @@ set t_Co=256
 "设置Vim主题
 colorscheme fijicat
 autocmd Filetype c,cpp colorscheme fijicat
-autocmd FileType python colorscheme gruvbox
+autocmd FileType python,rust colorscheme gruvbox
 autocmd FileType bash,zsh colorscheme spacecamp
 autocmd FileType markdown.mkd colorscheme detorte
 autocmd FileType text colorscheme challenger_deep
@@ -317,11 +317,12 @@ Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'rhysd/vim-clang-format'
+"Plug 'rhysd/vim-clang-format'
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 Plug 'arzg/vim-rust-syntax-ext'
 Plug 'alx741/vim-rustfmt'
 Plug 'wakatime/vim-wakatime'
+Plug 'racer-rust/vim-racer'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -389,7 +390,9 @@ let g:startify_skiplist = [
        \ ]
 
 " YouCompleteMe 补全配置
-" Python3的解释器路径
+" Rust库路径
+let g:ycm_rust_src_path="/home/jacklanda/.cargo/registry/src/"
+"Python3的解释器路径
 let g:ycm_python_binary_path = '/usr/bin/python3.9'
 "配置全局路径
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
@@ -417,6 +420,7 @@ let g:ycm_semantic_triggers={
   \   'py,python,go': ['.'],
   \   'cpp' : ['->', '.', '::'],
   \   'c,cpp,python,py,java,go,erlang,perl': ['re!\w{2}'],
+  \   'rust': ['.', ':', '::', '=>', '<='],
   \   'css': ['re!^\s{4}', 're!:\s+'],
   \   'html': ['</'],
   \ }
@@ -501,6 +505,7 @@ let g:NERDCustomDelimiters = {
             \'c': {'left': '/*', 'right': '*/'},
             \'cpp': {'left':'/*', 'right': '*/'},
             \'go': {'left': '/*', 'right': '*/'},
+            \'vim': {'left': '"'},
             \}
 "单行注释&取消注释
 nmap \ ,c<space>
@@ -546,7 +551,7 @@ let g:cpp_concepts_highlight = 1
 let g:cpp_no_function_highlight = 1
 
 "vim-clang-format 配置
-let g:clang_format#auto_format = 1
+"let g:clang_format#auto_format = 1
 
 "vim-minimap配置
 let g:minimap_auto_start = 1
@@ -555,3 +560,7 @@ let g:minimap_width = 15
 
 "vim-rustfmt配置
 let g:rustfmt_on_save = 1
+
+"vim-racer配置
+let g:racer_cmd = "/home/jacklanda/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
