@@ -102,7 +102,6 @@ alias desktop='/home/jacklanda/桌面'
 alias windows='/run/media/jacklanda/系统/Users/Administrator/Desktop/'
 alias setproxy='export ALL_PROXY=socks5://127.0.0.1:1088'
 alias unsetproxy='unset ALL_PROXY'
-alias show='find -name'
 alias anal='ncdu'
 alias t='trans'
 alias clock='watch -n1 "date '+%D%n%T'|figlet -k"'
@@ -118,29 +117,35 @@ alias status="sudo systemctl status"
 alias restart="sudo systemctl restart"
 alias login="/home/jacklanda/script/login_school_network --login"
 alias logout="/home/jacklanda/script/login_school_network --logout"
-alias remote="ssh -p 2222 liuyang@relay01.data-baker.com"
 alias count="ls -l | grep "^-" | wc -l"
 alias wordfreq="sh ~/script/word_freq.sh"
 alias client="redis-cli"
 alias redis-out="sudo rdb -c memory /var/lib/redis/dump.rdb > /home/jacklanda/桌面/redis_mem.csv"
 alias site-packages="cd ~/.local/lib/python3.9/site-packages"
+# 替换find为Rust的实现版本fd
 alias find="fd -IH"
+alias find-content="fd .|xargs grep -ri"
+# 替换grep为Rust的实现版本rg
 alias grep="rg -uuu"
+# 替换ls为Rust的实现版本exa
+alias ls="exa"
+# 替换cat为Rust的实现版本bat
 alias cat="bat"
 alias info="tldr"
-alias ls="exa"
-alias find-content="fd .|xargs grep -ri"
 
 # User configuration
 
 # 添加Rust可执行文件的环境变量
 export PATH="$HOME/.cargo/bin:$PATH"
+# 设置Rust国内镜像
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 
+# 设置Go相关环境变量
 export GOROOT=$HOME/.go/go
 export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME/.gopath
 export PATH=$PATH:$GOPATH/bin
-
 # 设置Go代理
 export GO111MODULE=on
 export GOPROXY=https://goproxy.io
