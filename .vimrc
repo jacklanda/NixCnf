@@ -322,7 +322,7 @@ Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 Plug 'arzg/vim-rust-syntax-ext'
 Plug 'alx741/vim-rustfmt'
 Plug 'wakatime/vim-wakatime'
-Plug 'racer-rust/vim-racer'
+"Plug 'racer-rust/vim-racer'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -556,7 +556,7 @@ let g:cpp_no_function_highlight = 1
 "vim-minimap配置
 let g:minimap_auto_start = 1
 let g:minimap_width = 15
-"let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'vista', 'startify']
+let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'tagbar', 'vista', 'startify']
 
 "vim-rustfmt配置
 let g:rustfmt_on_save = 1
