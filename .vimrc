@@ -317,12 +317,12 @@ Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
 Plug 'octol/vim-cpp-enhanced-highlight'
-"Plug 'rhysd/vim-clang-format'
+Plug 'rhysd/vim-clang-format'
 Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 Plug 'arzg/vim-rust-syntax-ext'
 Plug 'alx741/vim-rustfmt'
 Plug 'wakatime/vim-wakatime'
-"Plug 'racer-rust/vim-racer'
+Plug 'racer-rust/vim-racer'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -391,7 +391,7 @@ let g:startify_skiplist = [
 
 " YouCompleteMe 补全配置
 " Rust库路径
-let g:ycm_rust_src_path="/home/jacklanda/.cargo/registry/src/"
+let g:ycm_rust_src_path="/home/jacklanda/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib"
 "Python3的解释器路径
 let g:ycm_python_binary_path = '/usr/bin/python3.9'
 "配置全局路径
@@ -500,11 +500,13 @@ nnoremap <silent> N :call WordNavigation(0)<cr>
 "nerdcommenter 配置：
 "使用紧凑语法美化多行注释
 let g:NERDCompactSexyComs = 1
+"注释后增加一空格
+"let g:NERDSpaceDelims = 1
 "自定义默认注释符
 let g:NERDCustomDelimiters = {
-            \'c': {'left': '/*', 'right': '*/'},
-            \'cpp': {'left':'/*', 'right': '*/'},
-            \'go': {'left': '/*', 'right': '*/'},
+            \'c': {'left': '/* ', 'right': ' */'},
+            \'cpp': {'left':'/* ', 'right': ' */'},
+            \'go': {'left': '/* ', 'right': ' */'},
             \'vim': {'left': '"'},
             \}
 "单行注释&取消注释
@@ -551,7 +553,7 @@ let g:cpp_concepts_highlight = 1
 let g:cpp_no_function_highlight = 1
 
 "vim-clang-format 配置
-"let g:clang_format#auto_format = 1
+let g:clang_format#auto_format = 1
 
 "vim-minimap配置
 let g:minimap_auto_start = 1
