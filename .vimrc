@@ -506,6 +506,7 @@ let g:NERDCompactSexyComs = 1
 let g:NERDCustomDelimiters = {
             \'c': {'left': '/* ', 'right': ' */'},
             \'cpp': {'left':'/* ', 'right': ' */'},
+            \'rust': {'left': '/* ', 'right': ' */'},
             \'go': {'left': '/* ', 'right': ' */'},
             \'vim': {'left': '"'},
             \}
@@ -530,7 +531,6 @@ let g:ale_lint_on_enter = 0
 nnoremap <F8> :Autopep8<CR>
 let g:autopep8_pep8_passes=1000
 let g:autopep8_disable_show_diff=1
-
 let g:autopep8_on_save = 1
 
 "vim-floaterm 配置
@@ -554,6 +554,11 @@ let g:cpp_no_function_highlight = 1
 
 "vim-clang-format 配置
 let g:clang_format#auto_format = 1
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11",}
 
 "vim-minimap配置
 let g:minimap_auto_start = 1
