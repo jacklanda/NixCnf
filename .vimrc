@@ -322,6 +322,7 @@ Plug 'arzg/vim-rust-syntax-ext'
 Plug 'alx741/vim-rustfmt'
 Plug 'wakatime/vim-wakatime'
 Plug 'racer-rust/vim-racer'
+"Plug 'jeaye/color_coded'
 call plug#end()
 
 "在NERDtree文件树中显示书签
