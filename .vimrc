@@ -1,4 +1,4 @@
-"使终端支持256色
+"令终端支持256色
 set t_Co=256
 "设置Vim主题
 colorscheme fijicat
