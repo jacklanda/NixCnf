@@ -317,7 +317,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format'
-Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+"Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 Plug 'arzg/vim-rust-syntax-ext'
 Plug 'alx741/vim-rustfmt'
 Plug 'wakatime/vim-wakatime'
