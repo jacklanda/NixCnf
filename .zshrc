@@ -118,6 +118,7 @@ alias status="sudo systemctl status"
 alias restart="sudo systemctl restart"
 alias login="/home/jacklanda/script/login_school_network --login"
 alias logout="/home/jacklanda/script/login_school_network --logout"
+alias remote="ssh -p 2222 liuyang@relay01.data-baker.com"
 alias count="ls -l | grep "^-" | wc -l"
 alias wordfreq="sh ~/script/word_freq.sh"
 alias client="redis-cli"
@@ -133,9 +134,9 @@ alias ls="exa"
 # 替换cat为Rust的实现版本bat
 alias cat="bat"
 alias info="tldr"
+alias spark="pyspark"
 
 # User configuration
-
 # 添加Rust可执行文件的环境变量
 export PATH="$HOME/.cargo/bin:$PATH"
 # 设置Rust国内镜像
