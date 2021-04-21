@@ -569,3 +569,5 @@ let g:rustfmt_on_save = 1
 "vim-racer配置
 let g:racer_cmd = "/home/jacklanda/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
+
+"nnoremap <F6> :!rm %<CR>
