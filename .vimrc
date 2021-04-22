@@ -1,5 +1,7 @@
 "令终端支持256色
 set t_Co=256
+"MacOs下解决delete/backspace键失效的问题
+set backspace=2
 "设置Vim主题
 colorscheme fijicat
 autocmd Filetype c,cpp colorscheme fijicat
@@ -210,7 +212,8 @@ set foldlevelstart=99 "关闭默认折叠选项"
 
 nnoremap <F2> :set nu! nu?<CR>
 nnoremap <silent><F3> :silent NERDTree<CR>
-nnoremap <silent><F4> :silent Vista<CR>
+"nnoremap <silent><F4> :silent Vista<CR>
+nnoremap <F4> :TagbarToggle<CR>
 nnoremap <silent><F10> : silent UndotreeToggle<CR>
 
 "按<m>快速切换已打开的文件（缓冲）
@@ -272,7 +275,7 @@ elseif &filetype == 'python'
     silent :!echo "+----------------------+"
     silent :!echo "|「Python」脚本输出为：|"
     silent :!echo "+----------------------+\n"
-    silent exec "!python3.9 %"
+    silent exec "!python3 %"
     call feedkeys("\<C-d>")
     "call feedkeys("\<C-z>",'n')
     endif
@@ -292,13 +295,16 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ervandew/supertab'
-Plug 'liuchengxu/vista.vim'
+"Plug 'liuchengxu/vista.vim'
 Plug 'mhinz/vim-startify'
+Plug 'preservim/tagbar'
 Plug 'mbbill/undotree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-css-color'
 Plug 'guns/xterm-color-table.vim'
-Plug 'ycm-core/YouCompleteMe'
+"Plug 'ycm-core/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'yianwillis/vimcdoc'
 Plug 'voldikss/vim-translator'
 Plug 'fatih/vim-go'
@@ -349,6 +355,7 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \  }
 
+
 "Vim-tanslator配置
 nmap <silent> <Leader>t <Plug>TranslateW
 let g:tanslator_default_engines = ['youdao', 'haici', 'google']
@@ -391,7 +398,7 @@ let g:startify_skiplist = [
 " Rust库路径
 let g:ycm_rust_src_path="/home/jacklanda/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib"
 "Python3的解释器路径
-let g:ycm_python_binary_path = '/usr/bin/python3.9'
+let g:ycm_python_binary_path = '/usr/bin/python3'
 "配置全局路径
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
 "直接加载文件，不提示
