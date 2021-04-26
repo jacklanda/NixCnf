@@ -4,6 +4,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR=/usr/bin/vim
+export ZSH_DISABLE_COMPFIX=true
+# 设置mac下mysql环境变量
+export PATH=${PATH}:/usr/local/mysql/bin/
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -84,6 +87,14 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey ',' autosuggest-accept
 
+# 设置zsh命令行代理
+# Manjaro Linux下：
+# alias setproxy='export ALL_PROXY=socks5://127.0.0.1:1088'
+# alias unsetproxy='unset ALL_PROXY'
+# MacOs 下：
+alias setproxy='export http_proxy=http://127.0.0.1:1087'
+alias unsetproxy='export https_proxy=http://127.0.0.1:1087'
+
 alias pacman='sudo pacman'
 alias cls='clear'
 alias c='clear'
@@ -98,10 +109,9 @@ alias -s go=vim
 alias -s txt=vim
 alias cproj='/home/jacklanda/桌面/cproj/'
 alias linux='/home/jacklanda/桌面/'
+alias mac='~/Desktop'
 alias desktop='/home/jacklanda/桌面'
 alias windows='/run/media/jacklanda/系统/Users/Administrator/Desktop/'
-alias setproxy='export ALL_PROXY=socks5://127.0.0.1:1088'
-alias unsetproxy='unset ALL_PROXY'
 alias show='find -name'
 alias anal='ncdu'
 alias t='trans'
@@ -135,6 +145,8 @@ alias ls="exa"
 alias cat="bat"
 alias info="tldr"
 alias spark="pyspark"
+alias python="python3"
+alias mysql="mycli -u root"
 
 # User configuration
 # 添加Rust可执行文件的环境变量
@@ -151,6 +163,10 @@ export PATH=$PATH:$GOPATH/bin
 # 设置Go代理
 export GO111MODULE=on
 export GOPROXY=https://goproxy.io
+
+# 设置Java环境
+export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
+export CPPFLAGS="-I/usr/local/opt/openjdk@8/include"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -173,3 +189,21 @@ export GOPROXY=https://goproxy.io
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/didi/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/didi/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/didi/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/didi/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+PROMPT=$(echo $PROMPT | sed 's/(base) //')
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
