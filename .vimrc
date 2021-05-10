@@ -5,7 +5,7 @@ set backspace=2
 "设置Vim主题
 colorscheme fijicat
 autocmd Filetype c,cpp colorscheme fijicat
-autocmd FileType python,rust colorscheme gruvbox
+autocmd FileType rust,python colorscheme gruvbox
 autocmd FileType bash,zsh colorscheme spacecamp
 autocmd FileType markdown.mkd colorscheme detorte
 autocmd FileType text colorscheme challenger_deep
@@ -212,8 +212,8 @@ set foldlevelstart=99 "关闭默认折叠选项"
 
 nnoremap <F2> :set nu! nu?<CR>
 nnoremap <silent><F3> :silent NERDTree<CR>
-"nnoremap <silent><F4> :silent Vista<CR>
-nnoremap <F4> :TagbarToggle<CR>
+nnoremap <silent><F4> :silent Vista<CR>
+"nnoremap <F4> :TagbarToggle<CR>
 nnoremap <silent><F10> : silent UndotreeToggle<CR>
 
 "按<m>快速切换已打开的文件（缓冲）
@@ -295,15 +295,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ervandew/supertab'
-"Plug 'liuchengxu/vista.vim'
 Plug 'mhinz/vim-startify'
-Plug 'preservim/tagbar'
+Plug 'liuchengxu/vista.vim'
 Plug 'mbbill/undotree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-css-color'
 Plug 'guns/xterm-color-table.vim'
-"Plug 'ycm-core/YouCompleteMe'
-"Plug 'Valloric/YouCompleteMe'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'yianwillis/vimcdoc'
 Plug 'voldikss/vim-translator'
@@ -355,7 +352,6 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \  }
 
-
 "Vim-tanslator配置
 nmap <silent> <Leader>t <Plug>TranslateW
 let g:tanslator_default_engines = ['youdao', 'haici', 'google']
@@ -396,11 +392,11 @@ let g:startify_skiplist = [
 
 " YouCompleteMe 补全配置
 " Rust库路径
-let g:ycm_rust_src_path="/home/jacklanda/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib"
+"let g:ycm_rust_src_path="/home/jacklanda/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib"
 "Python3的解释器路径
-let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_python_binary_path = '/Users/didi/opt/anaconda3/bin/python3'
 "配置全局路径
-let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='/Users/didi/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
 "直接加载文件，不提示
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_use_clangd=1
@@ -430,7 +426,7 @@ let g:ycm_semantic_triggers={
   \   'html': ['</'],
   \ }
 "按tab键移动选项游标
-let g:ycm_key_list_select_completion = ['<TAB>']
+"let g:ycm_key_list_select_completion = ['<TAB>']
 "插入模式下按回车键选中
 let g:ycm_key_list_stop_completion = ['<CR>']
 set completeopt=menu,menuone
@@ -576,3 +572,8 @@ let g:rustfmt_on_save = 1
 "vim-racer配置
 let g:racer_cmd = "/home/jacklanda/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
+
+"supertab配置
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+"coc-nvim配置
