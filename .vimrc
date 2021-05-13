@@ -324,6 +324,7 @@ Plug 'arzg/vim-rust-syntax-ext'
 Plug 'alx741/vim-rustfmt'
 Plug 'wakatime/vim-wakatime'
 Plug 'racer-rust/vim-racer'
+Plug 'mechatroner/rainbow_csv'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -577,3 +578,10 @@ let g:racer_experimental_completer = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 "coc-nvim配置
+
+"rainbow_csv配置
+let g:rcsv_delimiters = ["\t", ",", "^", "~#~"]
+" 常用命令↓
+" :RainbowAlign => 文本列对齐
+" :RainbowShrink  => 取消列对齐(恢复原文本)
+let g:rcsv_colorpairs = [['yellow', 'yellow'], ['blue', 'blue'], ['green', 'green'], ['magenta', 'magenta'], ['NONE', 'NONE'], ['darkred', 'darkred'], ['red', 'red'], ['darkgreen', 'darkgreen'], ['darkmagenta', 'darkmagenta'], ['darkcyan', 'darkcyan']]
