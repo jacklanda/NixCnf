@@ -147,6 +147,7 @@ alias info="tldr"
 alias spark="pyspark"
 alias python="python3"
 alias mysql="mycli -u root"
+alias rs="rustc $@"
 
 # User configuration
 # 添加Rust可执行文件的环境变量
