@@ -315,7 +315,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
 Plug 'gregsexton/matchtag'
 Plug 'w0rp/ale'
-Plug 'tell-k/vim-autopep8', {'for': 'python'}
+"Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
 Plug 'octol/vim-cpp-enhanced-highlight'
