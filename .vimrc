@@ -315,7 +315,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
 Plug 'gregsexton/matchtag'
 Plug 'w0rp/ale'
-"Plug 'tell-k/vim-autopep8', {'for': 'python'}
+Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -325,6 +325,7 @@ Plug 'alx741/vim-rustfmt'
 Plug 'wakatime/vim-wakatime'
 Plug 'racer-rust/vim-racer'
 Plug 'mechatroner/rainbow_csv'
+Plug 'voldikss/vim-codelf'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -525,9 +526,9 @@ imap <c-\> <esc>,c<space><end>
 "let g:markbar_num_lines_context = 3
 
 "ale 配置
-let g:ale_set_highlights = 1
-nmap <F9> :ALELint<CR>
-let g:ale_lint_on_enter = 0
+"let g:ale_set_highlights = 1
+"nmap <F9> :ALELint<CR>
+"let g:ale_lint_on_enter = 0
 
 "autopep-8 配置
 nnoremap <F8> :Autopep8<CR>
@@ -585,3 +586,11 @@ let g:rcsv_delimiters = ["\t", ",", "^", "~#~"]
 " :RainbowAlign => 文本列对齐
 " :RainbowShrink  => 取消列对齐(恢复原文本)
 let g:rcsv_colorpairs = [['yellow', 'yellow'], ['blue', 'blue'], ['green', 'green'], ['magenta', 'magenta'], ['NONE', 'NONE'], ['darkred', 'darkred'], ['red', 'red'], ['darkgreen', 'darkgreen'], ['darkmagenta', 'darkmagenta'], ['darkcyan', 'darkcyan']]
+
+"vim-codelf配置
+" Example key mappings configuration
+inoremap <silent> <Leader>l <left><C-R>=codelf#start()<CR>
+nnoremap <silent> <Leader>l :call codelf#start()<CR>
+let g:codelf_enable_popup_menu = 1
+"let g:codelf_proxy_url = http://127.0.0.1:1080
+let g:codelf_status = 1
