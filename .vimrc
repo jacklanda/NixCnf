@@ -357,6 +357,8 @@ let g:vista#renderer#icons = {
 "Vim-tanslator配置
 nmap <silent> <Leader>t <Plug>TranslateW
 let g:tanslator_default_engines = ['youdao', 'haici', 'google']
+let g:translator_window_max_width = 1.0*&columns
+let g:translator_window_max_height = 2.0*&lines
 
 "设置Vim的背景为终端透明（首先终端设置为透明）
 hi Normal guibg=NONE ctermbg=NONE
