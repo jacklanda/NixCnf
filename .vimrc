@@ -355,7 +355,8 @@ let g:vista#renderer#icons = {
 \  }
 
 "Vim-tanslator配置
-nmap <silent> <Leader>t <Plug>TranslateW
+nmap <silent> t <Plug>TranslateW
+vmap <silent> t :TranslateW<CR>
 let g:tanslator_default_engines = ['youdao', 'haici', 'google']
 let g:translator_window_max_width = 1.0*&columns
 let g:translator_window_max_height = 2.0*&lines
