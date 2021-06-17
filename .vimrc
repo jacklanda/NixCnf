@@ -145,17 +145,17 @@ inoremap <Leader>w <Esc>:w!<CR>
 nnoremap q :q<CR>
 
 "复制粘贴
-nnoremap <Leader>a ggVG"
-noremap <leader>c yG"
-noremap <leader>v p"
-noremap <leader>d dG"
+nnoremap <Leader>a ggVG
+noremap <leader>c yG
+noremap <leader>v p
+noremap <leader>d dG
 
 "对当前窗口竖直分屏
-nnoremap w <C-w>v
+nnoremap <S-w> <C-w>v
 
 "匹配结果居中
 nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
+nnoremap <silent> N rzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
@@ -174,11 +174,8 @@ nnoremap . <delete>
 
 "Ctrl+c 将文本内容复制到系统剪贴板
 "Ctrl+v 将系统的剪贴板内容复制到Vim中
-nnoremap <C-c> "+y
-nnoremap <C-v> "+p
-
-cmap w!! w !sudo tee >/dev/null %
-cmap wq!! wq !sudo tee >/dev/null %
+nnoremap <C-c> +y
+nnoremap <C-v> +p
 
 nnoremap <S-k> gg
 nnoremap <S-j> G
@@ -194,26 +191,29 @@ let g:powerline_pycmd="py3"
 set laststatus=2
 syntax on
 
-" 代码折叠自定义快捷键 b
-map b zc
-map bb zx
+"按w移动光标到上一个词词首
+"按e移动光标到下一个词词首
+nnoremap e <S-w>
+nnoremap w <S-b>
+
+"代码折叠自定义快捷键
 set foldmethod=indent
 set foldlevelstart=99 "关闭默认折叠选项"
 
-" 折叠方法:
-" manual    手工折叠
-" indent    使用缩进表示折叠
-" expr      使用表达式定义折叠
-" syntax    使用语法定义折叠
-" diff      对没有更改的文本进行折叠
-" marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
-"auto Filetype python set foldmethod=indent
-"auto Filetype cpp set foldmethod=indent
+"折叠方法:
+"manual    手工折叠
+"indent    使用缩进表示折叠
+"expr      使用表达式定义折叠
+"syntax    使用语法定义折叠
+"diff      对没有更改的文本进行折叠
+"marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
+auto Filetype python set foldmethod=indent
+auto Filetype cpp set foldmethod=indent
 
 nnoremap <F2> :set nu! nu?<CR>
 nnoremap <silent><F3> :silent NERDTree<CR>
 nnoremap <silent><F4> :silent Vista<CR>
-"nnoremap <F4> :TagbarToggle<CR>
+nnoremap <F4> :TagbarToggle<CR>
 nnoremap <silent><F10> : silent UndotreeToggle<CR>
 
 "按<m>快速切换已打开的文件（缓冲）
@@ -221,7 +221,7 @@ nnoremap <silent><F10> : silent UndotreeToggle<CR>
 map <silent>m :silent bn<CR>
 map <silent><S-m> :silent bp<CR>
 "按<e>关闭当前文件缓冲
-map <silent>e :silent bd<CR>
+map <silent><S-e> :silent bd<CR>
 map <silent>f :Leaderf file --fuzzy --reverse --bottom<CR>
 map <silent><leader>f :Leaderf mru --fuzzy --reverse --bottom<CR><TAB>
 map <silent><leader>g :Leaderf function --reverse --bottom<CR><TAB>
@@ -269,7 +269,7 @@ elseif &filetype == 'cpp'
     silent exec "!g++ % -o %<"
     silent exec "!./%<"
     call feedkeys("\<C-d>")
-    "call feedkeys("\<C-z>",'n')
+    call feedkeys("\<C-z>",'n')
 elseif &filetype == 'python'
     silent :!clear
     silent :!echo "+----------------------+"
@@ -277,15 +277,15 @@ elseif &filetype == 'python'
     silent :!echo "+----------------------+\n"
     silent exec "!python3 %"
     call feedkeys("\<C-d>")
-    "call feedkeys("\<C-z>",'n')
+    call feedkeys("\<C-z>",'n')
     endif
 endfunc
 
-set nocompatible              " 去除VI一致性
-filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
+set nocompatible               "去除VI一致性
+filetype plugin indent on     "必须加载vim自带和插件相应的语法和文件类型相关脚本
 
 call plug#begin()
-" 简写形式，只写username/repo即可
+"简写形式，只写username/repo即可
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
@@ -365,7 +365,7 @@ let g:translator_window_max_height = 2.0*&lines
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
 
-" 自定义Header和Footer
+"自定义Header和Footer
 let g:startify_custom_header = [
             \                       '   __  __   ______                   __          ___     ',
             \                       '  /\ \/\ \ /\__  _\   /`\_/`\      /`__`\      /`___`\   ',
@@ -388,95 +388,95 @@ let g:startify_custom_footer = [
             \ '+----------------+-------------+',
             \]
 
-" 起始页显示的列表长度
+"起始页显示的列表长度
 let g:startify_files_number=9
-" 过滤列表，支持正则表达式
+"过滤列表，支持正则表达式
 let g:startify_skiplist = [
        \ '^/tmp',
-       \ ]
+\ ]
 
-" YouCompleteMe 补全配置
-" Rust库路径
+"YouCompleteMe 补全配置
+"Rust库路径
 "let g:ycm_rust_src_path="/home/jacklanda/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib"
 "Python3的解释器路径
-let g:ycm_python_binary_path = '/Users/didi/opt/anaconda3/bin/python3'
+"let g:ycm_python_binary_path = '/Users/didi/opt/anaconda3/bin/python3'
 "配置全局路径
-let g:ycm_global_ycm_extra_conf='/Users/didi/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf='/Users/didi/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
 "直接加载文件，不提示
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_use_clangd=1
-let g:ycm_seed_identifiers_with_syntax = 1
+"let g:ycm_confirm_extra_conf = 0
+"let g:ycm_use_clangd=1
+"let g:ycm_seed_identifiers_with_syntax = 1
 "禁用ycm的语法检查
-let g:ycm_show_diagnostics_ui = 0
-set completeopt=menu
-" 语法关键字补全
-let g:ycm_seed_identifiers_with_syntax = 1
-" 开启 YCM 基于标签引擎
-let g:ycm_collect_identifiers_from_tags_files = 1
-" 从第2个键入字符就开始补全
-let g:ycm_min_num_identifier_candidate_chars = 2
-" 在注释输入中也能补全
-let g:ycm_complete_in_comments = 1
-" 在字符串输入中也能补全
-let g:ycm_complete_in_strings = 1
-let g:ycm_add_preview_to_completeopt = 0
+"let g:ycm_show_diagnostics_ui = 0
+"set completeopt=menu
+ "语法关键字补全
+"let g:ycm_seed_identifiers_with_syntax = 1
+ "开启 YCM 基于标签引擎
+"let g:ycm_collect_identifiers_from_tags_files = 1
+ "从第2个键入字符就开始补全
+"let g:ycm_min_num_identifier_candidate_chars = 2
+ "在注释输入中也能补全
+"let g:ycm_complete_in_comments = 1
+ "在字符串输入中也能补全
+"let g:ycm_complete_in_strings = 1
+"let g:ycm_add_preview_to_completeopt = 0
 "输入指定的符号将触发补全
-let g:ycm_semantic_triggers={
-  \   'c,markdown' : ['->', '.'],
-  \   'py,python,go': ['.'],
-  \   'cpp' : ['->', '.', '::'],
-  \   'c,cpp,python,py,java,go,erlang,perl': ['re!\w{2}'],
-  \   'rust': ['.', ':', '::', '=>', '<='],
-  \   'css': ['re!^\s{4}', 're!:\s+'],
-  \   'html': ['</'],
-  \ }
+"let g:ycm_semantic_triggers={
+  "\   'c,markdown' : ['->', '.'],
+  "\   'py,python,go': ['.'],
+  "\   'cpp' : ['->', '.', '::'],
+  "\   'c,cpp,python,py,java,go,erlang,perl': ['re!\w{2}'],
+  "\   'rust': ['.', ':', '::', '=>', '<='],
+  "\   'css': ['re!^\s{4}', 're!:\s+'],
+  "\   'html': ['</'],
+  "\ }
 "按tab键移动选项游标
 "let g:ycm_key_list_select_completion = ['<TAB>']
 "插入模式下按回车键选中
-let g:ycm_key_list_stop_completion = ['<CR>']
-set completeopt=menu,menuone
-let g:ycm_add_preview_to_completeopt = 0
+"let g:ycm_key_list_stop_completion = ['<CR>']
+"set completeopt=menu,menuone
+"let g:ycm_add_preview_to_completeopt = 0
 "设置YCM起作用的白名单
-let g:ycm_filetype_whitelist = {
-			\ "c":1,
-            \ "cpp":1,
-            \ "go":1,
-            \ "rust":1,
-            \ "python":1,
-            \ "vim":1,
-            \ "sh":1,
-			\ "zsh":1,
-            \ "yaml":1,
-            \ "markdown":1,
-			\ }
+"let g:ycm_filetype_whitelist = {
+            "\ "c":1,
+            "\ "cpp":1,
+            "\ "go":1,
+            "\ "rust":1,
+            "\ "python":1,
+            "\ "vim":1,
+            "\ "sh":1,
+            "\ "zsh":1,
+            "\ "yaml":1,
+            "\ "markdown":1,
+            "\ }
 "ycm不补全的黑名单
-let g:ycm_filetype_blacklist = {'txt':1, 'tagbar':1}
+"let g:ycm_filetype_blacklist = {'txt':1, 'tagbar':1}
 
-let g:go_bin_path=$HOME.".go/go/bin"
-let g:go_gopls_enabled = 1
-let g:go_def_mode = 'gopls'
-let g:go_fmt_command = "goimports" " 格式化将默认的 gofmt 替换
-let g:go_autodetect_gopath = 1
-let g:go_list_type = "quickfix"
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_generate_tags = 1
-let g:godef_split=2
-let g:go_doc_popup_window = 0
-let g:go_textobj_include_function_doc = 0
-let g:go_doc_keywordprg_enabled = 0
+"let g:go_bin_path=$HOME.".go/go/bin"
+"let g:go_gopls_enabled = 1
+"let g:go_def_mode = 'gopls'
+"let g:go_fmt_command = goimports" " 格式化将默认的 gofmt 替换
+"let g:go_autodetect_gopath = 1
+"let g:go_list_type = "quickfix"
+"let g:go_highlight_types = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_functions = 1
+"let g:go_highlight_function_calls = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_extra_types = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_generate_tags = 1
+"let g:godef_split=2
+"let g:go_doc_popup_window = 0
+"let g:go_textobj_include_function_doc = 0
+"let g:go_doc_keywordprg_enabled = 0
 
 "vim-bufferline缓冲区标签
 let g:bufferline_echo = 1
 let g:bufferline_modified = '+'
 let g:bufferline_show_bufnr = 0
 let g:bufferline_rotate = 1
-let g:bufferline_fixed_index =  0 "always first
+let g:bufferline_fixed_index = 0 "always first
 let g:bufferline_fname_mod = ':t'
 let g:bufferline_inactive_highlight = 'StatusLineNC'
 let g:bufferline_active_highlight = 'StatusLine'
@@ -485,20 +485,20 @@ let g:bufferline_excludes = [] "see source for defaults
 let g:bufferline_pathshorten = 0
 
 "vim-instant-markdown
-filetype plugin on
+"filetype plugin on
 "Uncomment to override defaults:
-let g:instant_markdown_autostart = 1
-let g:instant_markdown_open_to_the_world = 1
-let g:instant_markdown_allow_unsafe_content = 1
-let g:instant_markdown_allow_external_content = 1
-let g:instant_markdown_mathjax = 1
-let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
-let g:instant_markdown_port = 11111
-let g:instant_markdown_autoscroll = 1
-let g:go_auto_sameids = 0
+"let g:instant_markdown_autostart = 1
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 1
+"let g:instant_markdown_mathjax = 1
+"let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+"let g:instant_markdown_port = 11111
+"let g:instant_markdown_autoscroll = 1
+"let g:go_auto_sameids = 0
 
 "vim-interestingwords 单词背景高亮
-"let g:interestingWordsDefaultMappings = 1
+let g:interestingWordsDefaultMappings = 1
 nnoremap <silent> <F6> :call InterestingWords('n')<CR>
 nnoremap <silent> n :call WordNavigation(1)<cr>
 nnoremap <silent> N :call WordNavigation(0)<cr>
@@ -507,7 +507,7 @@ nnoremap <silent> N :call WordNavigation(0)<cr>
 "使用紧凑语法美化多行注释
 let g:NERDCompactSexyComs = 1
 "注释后增加一空格
-"let g:NERDSpaceDelims = 1
+let g:NERDSpaceDelims = 1
 "自定义默认注释符
 let g:NERDCustomDelimiters = {
             \'c': {'left': '/* ', 'right': ' */'},
@@ -524,9 +524,9 @@ vmap \ ,c<space>
 nmap <c-\> ,cA
 imap <c-\> <esc>,c<space><end>
 
-"nmap <leader>m <Plug>ToggleMarkbar
-"let g:markbar_width = 30
-"let g:markbar_num_lines_context = 3
+nmap <leader>m <Plug>ToggleMarkbar
+let g:markbar_width = 30
+let g:markbar_num_lines_context = 3
 
 "ale 配置
 "let g:ale_set_highlights = 1
@@ -538,6 +538,7 @@ nnoremap <F8> :Autopep8<CR>
 let g:autopep8_pep8_passes=1000
 let g:autopep8_disable_show_diff=1
 let g:autopep8_on_save = 1
+let g:autopep8_ignore="E501,W293"
 
 "vim-floaterm 配置
 highlight Floaterm ctermbg=black
@@ -585,15 +586,15 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 "rainbow_csv配置
 let g:rcsv_delimiters = ["\t", ",", "^", "~#~"]
-" 常用命令↓
-" :RainbowAlign => 文本列对齐
-" :RainbowShrink  => 取消列对齐(恢复原文本)
+ "常用命令↓
+ ":RainbowAlign => 文本列对齐
+ ":RainbowShrink  => 取消列对齐(恢复原文本)
 let g:rcsv_colorpairs = [['yellow', 'yellow'], ['blue', 'blue'], ['green', 'green'], ['magenta', 'magenta'], ['NONE', 'NONE'], ['darkred', 'darkred'], ['red', 'red'], ['darkgreen', 'darkgreen'], ['darkmagenta', 'darkmagenta'], ['darkcyan', 'darkcyan']]
 
 "vim-codelf配置
-" Example key mappings configuration
+ "Example key mappings configuration
 inoremap <silent> <Leader>l <left><C-R>=codelf#start()<CR>
 nnoremap <silent> <Leader>l :call codelf#start()<CR>
 let g:codelf_enable_popup_menu = 1
-"let g:codelf_proxy_url = http://127.0.0.1:1080
+let g:codelf_proxy_url="http://127.0.0.1:1080"
 let g:codelf_status = 1

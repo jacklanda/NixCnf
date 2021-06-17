@@ -147,6 +147,7 @@ alias spark="pyspark"
 alias python="python3"
 alias mysql="mycli -u root"
 alias rs="rustc $@"
+alias retail="cd ~/Desktop/online_international_retail_label"
 
 # User configuration
 # 添加Rust可执行文件的环境变量
