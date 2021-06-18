@@ -111,14 +111,14 @@ function! AutoSetFileHead()
 endfunc
 
 "autocmd FileType c,cpp,go,python,rust,xml,yml,perl
-autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+" autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 "保存文件时，自动删除多余空格
-fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
+" fun! <SID>StripTrailingWhitespaces()
+    " let l = line(".")
+    " let c = col(".")
+    " %s/\s\+$//e
+    " call cursor(l, c)
+" endfun
 
 "撤销配置:
 nnoremap U <C-r>
@@ -159,8 +159,6 @@ nnoremap <silent> N rzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
-
-nnoremap <silent>ww <C-w>w
 
 "关闭掉上次搜索的高亮
 noremap <silent><leader> :nohls<CR>
@@ -506,8 +504,6 @@ nnoremap <silent> N :call WordNavigation(0)<cr>
 "nerdcommenter 配置：
 "使用紧凑语法美化多行注释
 let g:NERDCompactSexyComs = 1
-"注释后增加一空格
-let g:NERDSpaceDelims = 1
 "自定义默认注释符
 let g:NERDCustomDelimiters = {
             \'c': {'left': '/* ', 'right': ' */'},
