@@ -4,12 +4,11 @@ set t_Co=256
 set backspace=2
 "设置Vim主题
 colorscheme fijicat
+autocmd FileType html,css colorscheme one
 autocmd Filetype c,cpp colorscheme fijicat
 autocmd FileType rust,python colorscheme gruvbox
 autocmd FileType bash,zsh colorscheme spacecamp
 autocmd FileType markdown.mkd colorscheme detorte
-autocmd FileType text colorscheme challenger_deep
-autocmd FileType html,css colorscheme one
 autocmd FileType javascript,html,css,xml set ai
 autocmd FileType javascript,html,css,xml set sw=2
 autocmd FileType javascript,html,css,xml set ts=2
@@ -110,7 +109,6 @@ function! AutoSetFileHead()
     normal o
 endfunc
 
-"autocmd FileType c,cpp,go,python,rust,xml,yml,perl
 " autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 "保存文件时，自动删除多余空格
 " fun! <SID>StripTrailingWhitespaces()
@@ -214,18 +212,18 @@ nnoremap <silent><F4> :silent Vista<CR>
 nnoremap <F4> :TagbarToggle<CR>
 nnoremap <silent><F10> : silent UndotreeToggle<CR>
 
-"按<m>快速切换已打开的文件（缓冲）
-"按<f>启动CtrlP模糊文件搜索
+"按<m>快速切换已打开的文件(缓冲)
 map <silent>m :silent bn<CR>
 map <silent><S-m> :silent bp<CR>
-"按<e>关闭当前文件缓冲
+"按<Shift-e>关闭当前文件缓冲
 map <silent><S-e> :silent bd<CR>
+
+"按<f>启动LeaderF模糊文件搜索
 map <silent>f :Leaderf file --fuzzy --reverse --bottom<CR>
 map <silent><leader>f :Leaderf mru --fuzzy --reverse --bottom<CR><TAB>
 map <silent><leader>g :Leaderf function --reverse --bottom<CR><TAB>
 map <silent>s :silent Startify<CR>
 
-noremap <C-d> :sh<CR>
 "<F5>一键（编译）运行程序（仅简单测试用）
 map <silent> <F5> :call CompileRunGcc()<CR><CR>
 func! CompileRunGcc()
@@ -450,6 +448,7 @@ let g:startify_skiplist = [
 "ycm不补全的黑名单
 "let g:ycm_filetype_blacklist = {'txt':1, 'tagbar':1}
 
+" vim-go 配置
 "let g:go_bin_path=$HOME.".go/go/bin"
 "let g:go_gopls_enabled = 1
 "let g:go_def_mode = 'gopls'
@@ -482,7 +481,7 @@ let g:bufferline_solo_highlight = 0
 let g:bufferline_excludes = [] "see source for defaults
 let g:bufferline_pathshorten = 0
 
-"vim-instant-markdown
+"vim-instant-markdown 配置
 "filetype plugin on
 "Uncomment to override defaults:
 "let g:instant_markdown_autostart = 1
@@ -586,6 +585,9 @@ let g:rcsv_delimiters = ["\t", ",", "^", "~#~"]
  ":RainbowAlign => 文本列对齐
  ":RainbowShrink  => 取消列对齐(恢复原文本)
 let g:rcsv_colorpairs = [['yellow', 'yellow'], ['blue', 'blue'], ['green', 'green'], ['magenta', 'magenta'], ['NONE', 'NONE'], ['darkred', 'darkred'], ['red', 'red'], ['darkgreen', 'darkgreen'], ['darkmagenta', 'darkmagenta'], ['darkcyan', 'darkcyan']]
+let g:rbql_with_headers = 1
+autocmd BufRead,BufNewFile *.csv set filetype=csv
+autocmd BufRead,BufNewFile *.tsv,*.txt set filetype=tsv
 
 "vim-codelf配置
  "Example key mappings configuration
