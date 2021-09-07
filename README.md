@@ -5,3 +5,5 @@
 - vimrc
 - zshrc
 - bashrc
+- KDE.kateschema
+- pacman.conf
