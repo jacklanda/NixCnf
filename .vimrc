@@ -137,6 +137,7 @@ nnoremap <right> l
 au InsertLeave * set nopaste
 
 "通过<kj>键快速从插入模式切换回普通模式
+"更推荐使用与<ESC>的ASCII码值相同的<C-[>来替代<ESC>
 inoremap kj <Esc>
 nnoremap <silent><Leader>w :w!<CR>
 inoremap <Leader>w <Esc>:w!<CR>
@@ -190,7 +191,9 @@ syntax on
 "按w移动光标到上一个词词首
 "按e移动光标到下一个词词首
 nnoremap e <S-w>
+vnoremap e <S-w>
 nnoremap w <S-b>
+vnoremap w <S-b>
 
 "代码折叠自定义快捷键
 set foldmethod=indent
@@ -209,7 +212,7 @@ auto Filetype cpp set foldmethod=indent
 nnoremap <F2> :set nu! nu?<CR>
 nnoremap <silent><F3> :silent NERDTree<CR>
 nnoremap <silent><F4> :silent Vista<CR>
-nnoremap <F4> :TagbarToggle<CR>
+"nnoremap <F4> :TagbarToggle<CR>
 nnoremap <silent><F10> : silent UndotreeToggle<CR>
 
 "按<m>快速切换已打开的文件(缓冲)
@@ -262,7 +265,7 @@ elseif &filetype == 'cpp'
     silent :!echo "|「Cpp」程序输出为：|"
     silent :!echo "+-------------------+\n"
     silent exec "w"
-    silent exec "!g++ % -o %<"
+    silent exec "!g++ -std=c++17 % -o %<"
     silent exec "!./%<"
     call feedkeys("\<C-d>")
     call feedkeys("\<C-z>",'n')
@@ -311,7 +314,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
 Plug 'gregsexton/matchtag'
 Plug 'w0rp/ale'
-Plug 'tell-k/vim-autopep8', {'for': 'python'}
+"Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -343,6 +346,7 @@ let g:lightline = {
       \ }
 
 "Vista标签查找侧栏
+let g:vista_default_executive = 'ctags'
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
@@ -353,7 +357,7 @@ let g:vista#renderer#icons = {
 "Vim-tanslator配置
 nmap <silent> t <Plug>TranslateW
 vmap <silent> t :TranslateW<CR>
-let g:tanslator_default_engines = ['youdao', 'haici', 'google']
+let g:tanslator_default_engines = ['youdao', 'google', 'haici']
 let g:translator_window_max_width = 1.0*&columns
 let g:translator_window_max_height = 2.0*&lines
 
@@ -510,6 +514,7 @@ let g:NERDCustomDelimiters = {
             \'rust': {'left': '/* ', 'right': ' */'},
             \'go': {'left': '/* ', 'right': ' */'},
             \'vim': {'left': '"'},
+            \'cmake': {'left': '#'},
             \}
 "单行注释&取消注释
 nmap \ ,c<space>
@@ -578,6 +583,8 @@ let g:racer_experimental_completer = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 "coc-nvim配置
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 "rainbow_csv配置
 let g:rcsv_delimiters = ["\t", ",", "^", "~#~"]
