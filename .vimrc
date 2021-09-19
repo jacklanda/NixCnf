@@ -5,7 +5,7 @@ set backspace=2
 "设置Vim主题
 colorscheme fijicat
 autocmd FileType html,css colorscheme one
-autocmd Filetype c,cpp colorscheme fijicat
+autocmd FileType c,cpp colorscheme fijicat
 autocmd FileType rust,python colorscheme gruvbox
 autocmd FileType bash,zsh colorscheme spacecamp
 autocmd FileType markdown.mkd colorscheme detorte
@@ -610,4 +610,4 @@ let g:codelf_proxy_url="http://127.0.0.1:1080"
 let g:codelf_status = 1
 
 "vim-cpp-auto-include配置
-autocmd BufWritePre /Users/jacklanda/Desktop/cpp/lambda/pass_lambda_func_ptr.cpp :ruby CppAutoInclude::process
+autocmd BufWritePre *.cpp :ruby CppAutoInclude::process
