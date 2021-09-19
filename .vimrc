@@ -325,6 +325,8 @@ Plug 'wakatime/vim-wakatime'
 Plug 'racer-rust/vim-racer'
 Plug 'mechatroner/rainbow_csv'
 Plug 'voldikss/vim-codelf'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'quark-zju/vim-cpp-auto-include'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -566,6 +568,9 @@ let g:clang_format#style_options = {
             \ "AllowShortIfStatementsOnASingleLine" : "true",
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "C++11",}
+let g:clang_format#code_style = "google"
+"autocmd FileType c,cpp ClangFormatAutoEnable
+
 
 "vim-minimap配置
 let g:minimap_auto_start = 1
@@ -603,3 +608,6 @@ nnoremap <silent> <Leader>l :call codelf#start()<CR>
 let g:codelf_enable_popup_menu = 1
 let g:codelf_proxy_url="http://127.0.0.1:1080"
 let g:codelf_status = 1
+
+"vim-cpp-auto-include配置
+autocmd BufWritePre /Users/jacklanda/Desktop/cpp/lambda/pass_lambda_func_ptr.cpp :ruby CppAutoInclude::process
