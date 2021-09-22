@@ -349,12 +349,19 @@ let g:lightline = {
 
 "Vista标签查找侧栏
 let g:vista_default_executive = 'ctags'
+let g:vista_sidebar_width = 35
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
 \  }
+let g:vista_executive_for = {
+      \ 'cpp': 'coc',
+      \ 'c'  : 'coc',
+      \ 'cc' : 'coc',
+      \ }
+let g:vista_echo_cursor_strategy = "both"
 
 "Vim-tanslator配置
 nmap <silent> t <Plug>TranslateW
