@@ -571,10 +571,11 @@ let g:cpp_no_function_highlight = 1
 "vim-clang-format 配置
 let g:clang_format#auto_format = 1
 let g:clang_format#style_options = {
+            \ "IndentWidth" : 4,
             \ "AccessModifierOffset" : -4,
             \ "AllowShortIfStatementsOnASingleLine" : "true",
             \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C++11",}
+            \ "Standard" : "Cpp11",}
 let g:clang_format#code_style = "google"
 "autocmd FileType c,cpp ClangFormatAutoEnable
 
@@ -617,4 +618,4 @@ let g:codelf_proxy_url="http://127.0.0.1:1080"
 let g:codelf_status = 1
 
 "vim-cpp-auto-include配置
-autocmd BufWritePre *.cpp :ruby CppAutoInclude::process
+"autocmd BufWritePre *.cpp :ruby CppAutoInclude::process
