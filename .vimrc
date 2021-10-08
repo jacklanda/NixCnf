@@ -314,7 +314,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
 Plug 'gregsexton/matchtag'
 Plug 'w0rp/ale'
-"Plug 'tell-k/vim-autopep8', {'for': 'python'}
+Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -538,6 +538,7 @@ let g:markbar_width = 30
 let g:markbar_num_lines_context = 3
 
 "ale 配置
+let g:ale_cpp_cpplint_options = "-std=c++2a"
 "let g:ale_set_highlights = 1
 "nmap <F9> :ALELint<CR>
 "let g:ale_lint_on_enter = 0
@@ -577,7 +578,6 @@ let g:clang_format#style_options = {
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "Cpp11",}
 let g:clang_format#code_style = "google"
-"autocmd FileType c,cpp ClangFormatAutoEnable
 
 
 "vim-minimap配置
