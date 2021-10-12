@@ -318,7 +318,7 @@ Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'rhysd/vim-clang-format'
+"Plug 'rhysd/vim-clang-format'
 Plug 'arzg/vim-rust-syntax-ext'
 Plug 'alx741/vim-rustfmt'
 Plug 'wakatime/vim-wakatime'
@@ -619,3 +619,6 @@ let g:codelf_status = 1
 
 "vim-cpp-auto-include配置
 "autocmd BufWritePre *.cpp :ruby CppAutoInclude::process
+
+"自动检测类型并设置 CMakeLists 文件语法高亮
+autocmd BufNewFile,BufRead CMakeLists.txt set filetype=cmake
