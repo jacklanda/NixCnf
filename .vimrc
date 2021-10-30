@@ -5,7 +5,7 @@ set backspace=2
 "设置Vim主题
 colorscheme fijicat
 autocmd FileType html,css colorscheme one
-autocmd FileType c,cpp colorscheme fijicat
+autocmd FileType c,cpp colorscheme gruvbox
 autocmd FileType rust,python colorscheme gruvbox
 autocmd FileType bash,zsh colorscheme spacecamp
 autocmd FileType markdown.mkd colorscheme detorte
@@ -80,7 +80,11 @@ autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
 
 "自动根据文件类型选用主题
 function! AutoSetTheme()
-    if &filetype == 'python'
+    if &filetype == 'c'
+        colorscheme gruvbox
+    elseif &filetype == 'cpp'
+        colorscheme gruvbox
+    elseif &filetype == 'python'
         colorscheme gruvbox
     elseif &filetype == 'markdown.mkd'
         colorscheme detorte
@@ -318,7 +322,7 @@ Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
 Plug 'octol/vim-cpp-enhanced-highlight'
-"Plug 'rhysd/vim-clang-format'
+Plug 'rhysd/vim-clang-format'
 Plug 'arzg/vim-rust-syntax-ext'
 Plug 'alx741/vim-rustfmt'
 Plug 'wakatime/vim-wakatime'
@@ -327,6 +331,9 @@ Plug 'mechatroner/rainbow_csv'
 Plug 'voldikss/vim-codelf'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'quark-zju/vim-cpp-auto-include'
+Plug 'gauteh/vim-cppman'
+"Plug 'bagrat/vim-buffet'
+Plug 'luochen1990/rainbow'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -343,13 +350,16 @@ let g:lightline = {
       \ 'colorscheme': 'default',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename','modified'] ]
-      \           },
+      \             [ 'readonly', 'filename', 'modified', 'method'] ]
+      \ },
+      \ 'component_function': {
+      \   'method': 'NearestMethodOrFunction'
+      \},
       \ }
 
 "Vista标签查找侧栏
 let g:vista_default_executive = 'ctags'
-let g:vista_sidebar_width = 35
+let g:vista_sidebar_width = 40
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
@@ -366,7 +376,11 @@ let g:vista_echo_cursor_strategy = "both"
 "Vim-tanslator配置
 nmap <silent> t <Plug>TranslateW
 vmap <silent> t :TranslateW<CR>
-let g:tanslator_default_engines = ['youdao', 'google', 'haici']
+let g:translator_source_lang = "auto"
+let g:translator_target_lang = "zh"
+let g:tanslator_default_engines = ["bing", "trans", "haici", "youdao"]
+let g:translator_history_enable = v:true
+let g:translator_window_type = "popup"
 let g:translator_window_max_width = 1.0*&columns
 let g:translator_window_max_height = 2.0*&lines
 
@@ -576,7 +590,9 @@ let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4,
             \ "AllowShortIfStatementsOnASingleLine" : "true",
             \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "Cpp11",}
+            \ "AlignTrailingComments": "false",
+            \ "ColumnLimit": "150",
+            \ "Standard" : "C++11",}
 let g:clang_format#code_style = "google"
 
 
@@ -622,3 +638,49 @@ let g:codelf_status = 1
 
 "自动检测类型并设置 CMakeLists 文件语法高亮
 autocmd BufNewFile,BufRead CMakeLists.txt set filetype=cmake
+
+"vim-buffet
+"noremap <Tab> :tabNext<CR>
+"noremap <S-Tab> :tabPrevious<CR>
+"noremap <Leader><Tab> :tabnew split<CR>
+
+"nmap <leader>1 <Plug>BuffetSwitch(1)
+"nmap <leader>2 <Plug>BuffetSwitch(2)
+"nmap <leader>3 <Plug>BuffetSwitch(3)
+"nmap <leader>4 <Plug>BuffetSwitch(4)
+"nmap <leader>5 <Plug>BuffetSwitch(5)
+"nmap <leader>6 <Plug>BuffetSwitch(6)
+"nmap <leader>7 <Plug>BuffetSwitch(7)
+"nmap <leader>8 <Plug>BuffetSwitch(8)
+"nmap <leader>9 <Plug>BuffetSwitch(9)
+"nmap <leader>0 <Plug>BuffetSwitch(10)
+
+"" Note: Make sure the function is defined before `vim-buffet` is loaded.
+"function! g:BuffetSetCustomColors()
+  "hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#00FF00 guifg=#000000
+"endfunction
+
+"rainbow 插件配置
+"let g:rainbow_active = 1
+"let g:rainbow_conf = {
+"\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+"\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+"\	'operators': '_,_',
+"\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+"\	'separately': {
+"\		'*': {},
+"\		'tex': {
+"\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+"\		},
+"\		'lisp': {
+"\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+"\		},
+"\		'vim': {
+"\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+"\		},
+"\		'html': {
+"\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+"\		},
+"\		'css': 0,
+"\	}
+"\}
