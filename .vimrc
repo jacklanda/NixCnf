@@ -182,6 +182,8 @@ nnoremap <S-k> gg
 nnoremap <S-j> G
 nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
+vnoremap <S-h> <Home>
+vnoremap <S-l> <End>
 
 "快速翻页/删除/复制
 nnoremap 1 10
