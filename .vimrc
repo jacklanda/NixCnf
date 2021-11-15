@@ -76,7 +76,7 @@ filetype indent on
 autocmd FileType python,c,cpp set tabstop=4 shiftwidth=4 expandtab ai
 autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
 autocmd BufRead,BufNew *.md,*.mkd,*.markdown set filetype=markdown.mkd
-autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
+"autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
 
 "自动根据文件类型选用主题
 function! AutoSetTheme()
@@ -183,7 +183,7 @@ nnoremap <S-j> G
 nnoremap <S-h> <Home>
 nnoremap <S-l> <End>
 vnoremap <S-h> <Home>
-vnoremap <S-l> <End>
+vnoremap <S-l> <End>h
 
 "快速翻页/删除/复制
 nnoremap 1 10
