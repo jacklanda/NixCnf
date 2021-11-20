@@ -66,9 +66,14 @@ set softtabstop=4
 set cursorline
 set cursorcolumn
 "设置鼠标无效
-:set mouse=""
+":set mouse=""
 "隐藏鼠标
-:set mousehide
+":set mousehide
+"Enable mouse (esp. for balloons and scrolling in popups)
+set mouse=a       
+" .. also in 'terminals that emit SGR-styled mouse reporting'
+set ttymouse=sgr  
+set completeopt="menuone,preview"
 "Vim文件类型设置
 filetype on
 filetype plugin on
@@ -383,8 +388,8 @@ let g:translator_target_lang = "zh"
 let g:tanslator_default_engines = ["bing", "trans", "haici", "youdao"]
 let g:translator_history_enable = v:true
 let g:translator_window_type = "popup"
-let g:translator_window_max_width = 1.0*&columns
-let g:translator_window_max_height = 2.0*&lines
+let g:translator_window_max_width = 0.6*&columns
+let g:translator_window_max_height = 0.6*&lines
 
 "设置Vim的背景为终端透明（首先终端设置为透明）
 hi Normal guibg=NONE ctermbg=NONE
