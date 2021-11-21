@@ -1,0 +1,236 @@
+"令终端支持256色
+set t_Co=256
+"MacOs下解决delete/backspace键失效的问题
+set backspace=2
+"设置Vim主题
+colorscheme fijicat
+autocmd FileType html,css colorscheme one
+autocmd Filetype c,cpp colorscheme fijicat
+autocmd FileType rust,python colorscheme gruvbox
+autocmd FileType bash,zsh colorscheme spacecamp
+autocmd FileType markdown.mkd colorscheme detorte
+autocmd FileType javascript,html,css,xml set ai
+autocmd FileType javascript,html,css,xml set sw=2
+autocmd FileType javascript,html,css,xml set ts=2
+autocmd FileType javascript,html,css,xml set sts=2
+
+"重新打开Vim后回到上次退出Vim时的文本位置
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+"set completeopt+=popup
+let g:detorte_theme_mode = 'dark'
+set background=dark
+"文件在Vim之外修改过，自动重新读入
+set autoread
+set nobackup
+"取消警铃
+set noerrorbells
+set visualbell t_vb=
+set t_vb=
+"编码设置
+set timeoutlen=500
+set encoding=UTF-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileformats=unix,dos,mac
+set termencoding=utf-8
+set formatoptions+=m
+set formatoptions+=B
+"显示光标所在行/列号
+set ruler
+"显示行号
+set number
+"超过窗口宽度的行不自动回绕显示
+set nowrap
+"回显命令
+set showcmd
+set showmode
+set showmatch
+set matchtime=2
+"Vim查找配置
+set hlsearch
+set incsearch
+set ignorecase                  " 设置搜索时大小写不敏感 "
+set smartcase
+"Vim制表符设置
+set expandtab
+set smarttab
+set shiftround
+"Vim缩进设置
+set autoindent smartindent shiftround
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+"Vim显示当前光标位置
+set cursorline
+set cursorcolumn
+"设置鼠标无效
+:set mouse=""
+"隐藏鼠标
+:set mousehide
+"Vim文件类型设置
+filetype on
+filetype plugin on
+filetype indent on
+autocmd FileType python,c,cpp set tabstop=4 shiftwidth=4 expandtab ai
+autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+autocmd BufRead,BufNew *.md,*.mkd,*.markdown set filetype=markdown.mkd
+autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
+
+"自动根据文件类型选用主题
+function! AutoSetTheme()
+    if &filetype == 'python'
+        colorscheme gruvbox
+    elseif &filetype == 'markdown.mkd'
+        colorscheme detorte
+    elseif &filetype == 'text'
+        colorscheme challenger_deep
+    else
+        colorscheme fijicat
+    endif
+endfunc
+map <silent><C-t> :call AutoSetTheme() <CR>
+
+"自动设置文件头行
+function! AutoSetFileHead()
+    " .sh "
+    if &filetype == 'sh'
+        call setline(1, "\#!/bin/zsh")
+    endif
+    " python "
+    if &filetype == 'python'
+        call setline(1, "\#!/usr/bin/python3")
+        call append(1, "\# -*- coding: utf-8 -*-")
+        call append(1, "\# Author: Jacklanda")
+    endif
+    normal G
+    normal o
+    normal o
+endfunc
+
+"撤销配置:
+nnoremap U <C-r>
+set undolevels=10000              "撤销上限
+set undoreload=10000
+set undofile
+set undodir=$HOME/.vim/.undo/
+
+"修改引导键为逗点
+let mapleader=","
+
+"通过j,k,h,l来控制光标的移动
+nnoremap <up> k
+nnoremap <down> j
+nnoremap <left> h
+nnoremap <right> l
+
+au InsertLeave * set nopaste
+
+"通过<kj>键快速从插入模式切换回普通模式
+inoremap kj <Esc>
+nnoremap <silent><Leader>w :w<CR>
+inoremap <Leader>w <Esc>:w<CR>
+nnoremap q :q<CR>
+
+"复制粘贴
+nnoremap <Leader>a ggVG
+noremap <leader>c yG
+noremap <leader>v p
+noremap <leader>d dG
+
+"对当前窗口竖直分屏
+nnoremap <S-w> <C-w>v
+
+"匹配结果居中
+nnoremap <silent> n nzz
+nnoremap <silent> N rzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
+"关闭掉上次搜索的高亮
+noremap <silent><leader> :nohls<CR>
+
+"复制当前行到行尾的内容
+map Y y$
+
+"用;来代替:，省去了按shift
+nnoremap ; :
+nnoremap . <delete>
+
+"Ctrl+c 将文本内容复制到系统剪贴板
+"Ctrl+v 将系统的剪贴板内容复制到Vim中
+nnoremap <C-c> +y
+nnoremap <C-v> +p
+
+nnoremap <S-k> gg
+nnoremap <S-j> G
+nnoremap <S-h> <Home>
+nnoremap <S-l> <End>
+vnoremap <S-h> <Home>
+vnoremap <S-l> <End>h
+
+"快速翻页/删除/复制
+nnoremap 1 10
+nnoremap 2 20
+nnoremap 3 30
+
+let g:powerline_pycmd="py3"
+set laststatus=2
+syntax on
+
+"按w移动光标到上一个词词首
+"按e移动光标到下一个词词首
+nnoremap e <S-w>
+nnoremap w <S-b>
+
+"代码折叠自定义快捷键
+set foldmethod=indent
+set foldlevelstart=99 "关闭默认折叠选项"
+
+"折叠方法:
+"manual    手工折叠
+"indent    使用缩进表示折叠
+"expr      使用表达式定义折叠
+"syntax    使用语法定义折叠
+"diff      对没有更改的文本进行折叠
+"marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
+auto Filetype python set foldmethod=indent
+auto Filetype cpp set foldmethod=indent
+
+nnoremap <F2> :set nu! nu?<CR>
+nnoremap <silent><F3> :silent NERDTree<CR>
+nnoremap <silent><F4> :silent Vista<CR>
+"nnoremap <F4> :TagbarToggle<CR>
+nnoremap <silent><F10> : silent UndotreeToggle<CR>
+
+"按<m>快速切换已打开的文件(缓冲)
+map <silent>m :silent bn<CR>
+map <silent><S-m> :silent bp<CR>
+"按<Shift-e>关闭当前文件缓冲
+map <silent><S-e> :silent bd<CR>
+
+" 使用idea内部功能
+" copy operation
+nnoremap <Leader>c :action $Copy<CR>
+" paste operation
+nnoremap <Leader>v :action $Paste<CR>
+" cut operation
+nnoremap <Leader>x :action $Cut<CR>
+" Select All
+nnoremap <Leader>a :action $SelectAll<CR>
+" reformat code
+nnoremap <Leader>f :action ReformatCode<CR>
+" 隐藏激活窗口
+nnoremap <Leader>h :action HideActiveWindow<CR>
+" 按\注释
+set commentary
+"单行注释&取消注释
+nnoremap \ :action CommentByLineComment<CR>
+"多行注释&取消注释
+vnoremap \ :action CommentByLineComment<CR>
+"编译&运行项目
+nnoremap r :action Run<CR>
+"Debug项目
+nnoremap t :action Debug<CR>
