@@ -296,11 +296,12 @@ filetype plugin indent on     "必须加载vim自带和插件相应的语法和�
 
 call plug#begin()
 "简写形式，只写username/repo即可
-Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'Yggdroot/indentLine'
-Plug 'Yggdroot/LeaderF'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'Yggdroot/indentLine'
+Plug 'itchyny/lightline.vim'
+Plug 'Yggdroot/LeaderF'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -311,10 +312,8 @@ Plug 'mbbill/undotree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-css-color'
 Plug 'guns/xterm-color-table.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'yianwillis/vimcdoc'
 Plug 'voldikss/vim-translator'
-Plug 'fatih/vim-go'
 Plug 'bling/vim-bufferline'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'godlygeek/tabular'
@@ -325,22 +324,30 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
 Plug 'gregsexton/matchtag'
 Plug 'w0rp/ale'
-Plug 'tell-k/vim-autopep8', {'for': 'python'}
 Plug 'voldikss/vim-floaterm'
 Plug 'obcat/vim-hitspop'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'rhysd/vim-clang-format'
-Plug 'arzg/vim-rust-syntax-ext'
-Plug 'alx741/vim-rustfmt'
 Plug 'wakatime/vim-wakatime'
-Plug 'racer-rust/vim-racer'
 Plug 'mechatroner/rainbow_csv'
 Plug 'voldikss/vim-codelf'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-Plug 'quark-zju/vim-cpp-auto-include'
-Plug 'gauteh/vim-cppman'
 "Plug 'bagrat/vim-buffet'
 Plug 'luochen1990/rainbow'
+"Plugin for Python
+Plug 'tell-k/vim-autopep8', {'for': 'python'}
+"Plug for Golang
+Plug 'fatih/vim-go'
+"Plugin for Rust
+Plug 'alx741/vim-rustfmt'
+Plug 'racer-rust/vim-racer'
+Plug 'arzg/vim-rust-syntax-ext'
+"Plugin for C++
+Plug 'gauteh/vim-cppman'
+Plug 'rhysd/vim-clang-format'
+Plug 'quark-zju/vim-cpp-auto-include'
+Plug 'octol/vim-cpp-enhanced-highlight'
+" Plugin for SQL
+Plug 'mattn/vim-sqlfmt'
+Plug 'jsborjesson/vim-uppercase-sql'
 call plug#end()
 
 "在NERDtree文件树中显示书签
@@ -530,6 +537,7 @@ let g:bufferline_pathshorten = 0
 
 "vim-interestingwords 单词背景高亮
 let g:interestingWordsDefaultMappings = 1
+let g:interestingWordsTermColors = ['154', '121', '211', '6', '2', '160', '93', '137', '214', '222']
 nnoremap <silent> <F6> :call InterestingWords('n')<CR>
 nnoremap <silent> n :call WordNavigation(1)<cr>
 nnoremap <silent> N :call WordNavigation(0)<cr>
