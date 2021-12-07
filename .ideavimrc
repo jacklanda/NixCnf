@@ -144,7 +144,7 @@ nnoremap <S-w> <C-w>v
 
 "匹配结果居中
 nnoremap <silent> n nzz
-nnoremap <silent> N rzz
+nnoremap <silent><S-n> rzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
@@ -183,7 +183,9 @@ syntax on
 "按w移动光标到上一个词词首
 "按e移动光标到下一个词词首
 nnoremap e <S-w>
+vnoremap e <S-w>
 nnoremap w <S-b>
+vnoremap w <S-b>
 
 "代码折叠自定义快捷键
 set foldmethod=indent
