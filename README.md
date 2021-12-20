@@ -7,3 +7,5 @@
 - bashrc
 - KDE.kateschema
 - pacman.conf
+- .ideavimrc (vimrc for ideavim)
+- config.py (ptpython config)
