@@ -1,34 +1,35 @@
 "令终端支持256色
 set t_Co=256
+
 "MacOs下解决delete/backspace键失效的问题
 set backspace=2
+
 "设置Vim主题
-colorscheme fijicat
-autocmd FileType html,css colorscheme one
-autocmd FileType c,cpp colorscheme gruvbox
-autocmd FileType rust,python colorscheme gruvbox
-autocmd FileType bash,zsh colorscheme spacecamp
-autocmd FileType markdown.mkd colorscheme detorte
-autocmd FileType javascript,html,css,xml set ai
-autocmd FileType javascript,html,css,xml set sw=2
-autocmd FileType javascript,html,css,xml set ts=2
-autocmd FileType javascript,html,css,xml set sts=2
+colorscheme gruvbox
 
 "重新打开Vim后回到上次退出Vim时的文本位置
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+"Vimdiff 主题
+if &diff
+    colorscheme gruvbox
+endif
+
 "set completeopt+=popup
 let g:detorte_theme_mode = 'dark'
 set background=dark
+
 "文件在Vim之外修改过，自动重新读入
 set autoread
 set nobackup
+
 "取消警铃
 set noerrorbells
 set visualbell t_vb=
 set t_vb=
+
 "编码设置
 set timeoutlen=500
 set encoding=UTF-8
@@ -37,43 +38,53 @@ set fileformats=unix,dos,mac
 set termencoding=utf-8
 set formatoptions+=m
 set formatoptions+=B
+
 "显示光标所在行/列号
 set ruler
+
 "显示行号
 set number
+
 "超过窗口宽度的行不自动回绕显示
 set nowrap
+
 "回显命令
 set showcmd
 set showmode
 set showmatch
 set matchtime=2
+
 "Vim查找配置
 set hlsearch
 set incsearch
 set ignorecase                  " 设置搜索时大小写不敏感 "
 set smartcase
+
 "Vim制表符设置
 set expandtab
 set smarttab
 set shiftround
+
 "Vim缩进设置
 set autoindent smartindent shiftround
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
+
 "Vim显示当前光标位置
 set cursorline
 set cursorcolumn
+
 "设置鼠标无效
 ":set mouse=""
 "隐藏鼠标
 ":set mousehide
 "Enable mouse (esp. for balloons and scrolling in popups)
-set mouse=a       
+"set mouse=a       
 " .. also in 'terminals that emit SGR-styled mouse reporting'
-set ttymouse=sgr  
+"set ttymouse=sgr  
 set completeopt="menuone,preview"
+
 "Vim文件类型设置
 filetype on
 filetype plugin on
@@ -81,7 +92,9 @@ filetype indent on
 autocmd FileType python,c,cpp set tabstop=4 shiftwidth=4 expandtab ai
 autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
 autocmd BufRead,BufNew *.md,*.mkd,*.markdown set filetype=markdown.mkd
+autocmd BufRead,BufNew *.py set filetype=python
 "autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
+"autocmd FileType python exec ":call AutoSetTheme()"
 
 "自动根据文件类型选用主题
 function! AutoSetTheme()
@@ -100,6 +113,12 @@ function! AutoSetTheme()
     endif
 endfunc
 map <silent><C-t> :call AutoSetTheme() <CR>
+
+augroup tcl_filetype
+  au!
+  autocmd BufNewFile,BufRead *.tf   set filetype=tcl
+  autocmd FileType tcl colorscheme gruvbox
+augroup END
 
 "自动设置文件头行
 function! AutoSetFileHead()
@@ -180,13 +199,16 @@ nnoremap . <delete>
 
 "Ctrl+c 将文本内容复制到系统剪贴板
 "Ctrl+v 将系统的剪贴板内容复制到Vim中
-nnoremap <C-c> +y
-nnoremap <C-v> +p
+"set clipboard=unnamedplus
+"nnoremap <C-c> +y
+"nnoremap <C-v> +p
 
 nnoremap <S-k> gg
 nnoremap <S-j> G
 nnoremap <S-h> <Home>
+nnoremap d<S-h> d<Home>
 nnoremap <S-l> <End>
+nnoremap d<S-l> d<End>
 vnoremap <S-h> <Home>
 vnoremap <S-l> <End>h
 
@@ -305,7 +327,6 @@ Plug 'Yggdroot/LeaderF'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'ervandew/supertab'
 Plug 'mhinz/vim-startify'
 Plug 'liuchengxu/vista.vim'
 Plug 'mbbill/undotree'
@@ -343,7 +364,7 @@ Plug 'arzg/vim-rust-syntax-ext'
 "Plugin for C++
 Plug 'gauteh/vim-cppman'
 Plug 'rhysd/vim-clang-format'
-Plug 'quark-zju/vim-cpp-auto-include'
+"Plug 'quark-zju/vim-cpp-auto-include'
 Plug 'octol/vim-cpp-enhanced-highlight'
 " Plugin for SQL
 Plug 'mattn/vim-sqlfmt'
@@ -431,83 +452,6 @@ let g:startify_files_number=9
 let g:startify_skiplist = [
        \ '^/tmp',
 \ ]
-
-"YouCompleteMe 补全配置
-"Rust库路径
-"let g:ycm_rust_src_path="/home/jacklanda/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib"
-"Python3的解释器路径
-"let g:ycm_python_binary_path = '/Users/didi/opt/anaconda3/bin/python3'
-"配置全局路径
-"let g:ycm_global_ycm_extra_conf='/Users/didi/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
-"直接加载文件，不提示
-"let g:ycm_confirm_extra_conf = 0
-"let g:ycm_use_clangd=1
-"let g:ycm_seed_identifiers_with_syntax = 1
-"禁用ycm的语法检查
-"let g:ycm_show_diagnostics_ui = 0
-"set completeopt=menu
- "语法关键字补全
-"let g:ycm_seed_identifiers_with_syntax = 1
- "开启 YCM 基于标签引擎
-"let g:ycm_collect_identifiers_from_tags_files = 1
- "从第2个键入字符就开始补全
-"let g:ycm_min_num_identifier_candidate_chars = 2
- "在注释输入中也能补全
-"let g:ycm_complete_in_comments = 1
- "在字符串输入中也能补全
-"let g:ycm_complete_in_strings = 1
-"let g:ycm_add_preview_to_completeopt = 0
-"输入指定的符号将触发补全
-"let g:ycm_semantic_triggers={
-  "\   'c,markdown' : ['->', '.'],
-  "\   'py,python,go': ['.'],
-  "\   'cpp' : ['->', '.', '::'],
-  "\   'c,cpp,python,py,java,go,erlang,perl': ['re!\w{2}'],
-  "\   'rust': ['.', ':', '::', '=>', '<='],
-  "\   'css': ['re!^\s{4}', 're!:\s+'],
-  "\   'html': ['</'],
-  "\ }
-"按tab键移动选项游标
-"let g:ycm_key_list_select_completion = ['<TAB>']
-"插入模式下按回车键选中
-"let g:ycm_key_list_stop_completion = ['<CR>']
-"set completeopt=menu,menuone
-"let g:ycm_add_preview_to_completeopt = 0
-"设置YCM起作用的白名单
-"let g:ycm_filetype_whitelist = {
-            "\ "c":1,
-            "\ "cpp":1,
-            "\ "go":1,
-            "\ "rust":1,
-            "\ "python":1,
-            "\ "vim":1,
-            "\ "sh":1,
-            "\ "zsh":1,
-            "\ "yaml":1,
-            "\ "markdown":1,
-            "\ }
-"ycm不补全的黑名单
-"let g:ycm_filetype_blacklist = {'txt':1, 'tagbar':1}
-
-" vim-go 配置
-"let g:go_bin_path=$HOME.".go/go/bin"
-"let g:go_gopls_enabled = 1
-"let g:go_def_mode = 'gopls'
-"let g:go_fmt_command = goimports" " 格式化将默认的 gofmt 替换
-"let g:go_autodetect_gopath = 1
-"let g:go_list_type = "quickfix"
-"let g:go_highlight_types = 1
-"let g:go_highlight_fields = 1
-"let g:go_highlight_functions = 1
-"let g:go_highlight_function_calls = 1
-"let g:go_highlight_operators = 1
-"let g:go_highlight_extra_types = 1
-"let g:go_highlight_methods = 1
-"let g:go_highlight_generate_tags = 1
-"let g:godef_split=2
-"let g:go_doc_popup_window = 0
-"let g:go_textobj_include_function_doc = 0
-"let g:go_doc_keywordprg_enabled = 0
 
 "vim-bufferline缓冲区标签
 let g:bufferline_echo = 1
@@ -610,7 +554,6 @@ let g:clang_format#style_options = {
             \ "Standard" : "C++11",}
 let g:clang_format#code_style = "google"
 
-
 "vim-minimap配置
 let g:minimap_auto_start = 1
 let g:minimap_width = 15
@@ -623,25 +566,38 @@ let g:rustfmt_on_save = 1
 let g:racer_cmd = "/home/jacklanda/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 
-"supertab配置
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
 "coc-nvim配置
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+"GoTo code navigation.
+"nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+"Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+"Remap <cr> to make it confirms completion
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+"To make <cr> select the first completion item and confirm the completion when no item has been selected
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+"To make coc.nvim format your code on <cr>
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 "rainbow_csv配置
 let g:rcsv_delimiters = ["\t", ",", "^", "~#~"]
- "常用命令↓
- ":RainbowAlign => 文本列对齐
- ":RainbowShrink  => 取消列对齐(恢复原文本)
+"常用命令↓
+":RainbowAlign => 文本列对齐
+":RainbowShrink  => 取消列对齐(恢复原文本)
 let g:rcsv_colorpairs = [['yellow', 'yellow'], ['blue', 'blue'], ['green', 'green'], ['magenta', 'magenta'], ['NONE', 'NONE'], ['darkred', 'darkred'], ['red', 'red'], ['darkgreen', 'darkgreen'], ['darkmagenta', 'darkmagenta'], ['darkcyan', 'darkcyan']]
 let g:rbql_with_headers = 1
 autocmd BufRead,BufNewFile *.csv set filetype=csv
 autocmd BufRead,BufNewFile *.tsv,*.txt set filetype=tsv
 
 "vim-codelf配置
- "Example key mappings configuration
+"Example key mappings configuration
 inoremap <silent> <Leader>l <left><C-R>=codelf#start()<CR>
 nnoremap <silent> <Leader>l :call codelf#start()<CR>
 let g:codelf_enable_popup_menu = 1
@@ -653,24 +609,5 @@ let g:codelf_status = 1
 
 "自动检测类型并设置 CMakeLists 文件语法高亮
 autocmd BufNewFile,BufRead CMakeLists.txt set filetype=cmake
-
-"vim-buffet
-"noremap <Tab> :tabNext<CR>
-"noremap <S-Tab> :tabPrevious<CR>
-"noremap <Leader><Tab> :tabnew split<CR>
-
-"nmap <leader>1 <Plug>BuffetSwitch(1)
-"nmap <leader>2 <Plug>BuffetSwitch(2)
-"nmap <leader>3 <Plug>BuffetSwitch(3)
-"nmap <leader>4 <Plug>BuffetSwitch(4)
-"nmap <leader>5 <Plug>BuffetSwitch(5)
-"nmap <leader>6 <Plug>BuffetSwitch(6)
-"nmap <leader>7 <Plug>BuffetSwitch(7)
-"nmap <leader>8 <Plug>BuffetSwitch(8)
-"nmap <leader>9 <Plug>BuffetSwitch(9)
-"nmap <leader>0 <Plug>BuffetSwitch(10)
-
-"" Note: Make sure the function is defined before `vim-buffet` is loaded.
-"function! g:BuffetSetCustomColors()
-  "hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#00FF00 guifg=#000000
-"endfunction
+autocmd ColorScheme * hi CocMenuSel ctermbg=202 guibg=#fe8019
+doautocmd ColorScheme
